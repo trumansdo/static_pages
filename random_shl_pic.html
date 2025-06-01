@@ -20,8 +20,9 @@
 
     <script src="data/vars.js"></script>
     <script src="data/figure_data.js"></script>
-
+    <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
     <script type="module">
+        let vConsole = new window.VConsole();
         let file_paths = source_file_paths;
         let ym_arr = shl_ym_zh_yyys_ext;
         let random_ym_arr = shl_ym_zh_yyys_ext[Math.floor(Math.random() * shl_ym_zh_yyys_ext.length)];
