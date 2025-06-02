@@ -1,116 +1,98 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>随机本草</title>
     <style>
-        /* 确保iframe充满整个页面 */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
+      /* 确保iframe充满整个页面 */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
 
-        #frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+      #frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <h1><a id="link" href="#">等待刷新中...（如果没有变化，请手动刷新页面。）</a></h1>
+  <body>
+    <h1>
+      <a id="link" href="#">等待刷新中...（如果没有变化，请手动刷新页面。）</a>
+    </h1>
 
     <script src="data/vars.js"></script>
 
     <script>
-
-        function parseSearch() {
-            const search = window.location.search;
-            if (!search) return {};
-
-            const params = {};
-            const queryString = search.substring(1); // 移除开头的?
-
-            queryString.split('&').forEach(pair => {
-                if (!pair) return; // 跳过空项
-
-                // 处理键值对（支持值中包含=号）
-                const [key, ...valueParts] = pair.split('=');
-                const keyDecoded = decodeURIComponent(key);
-                const value = valueParts.join('=').replace(/\+/g, ' '); // 处理空格编码
-
-                // 处理重复参数（转为数组）
-                if (params.hasOwnProperty(keyDecoded)) {
-                    if (Array.isArray(params[keyDecoded])) {
-                        params[keyDecoded].push(value);
-                    } else {
-                        params[keyDecoded] = [params[keyDecoded], value];
-                    }
-                } else {
-                    params[keyDecoded] = value || ''; // 处理没有值的参数
-                }
-            });
-
-            return params;
-        }
-
+      (function init() {
         function filterUrls(dataArray, namesArray) {
-            // 1. 创建名称集合（Set）实现O(1)时间复杂度的查找
-            const nameSet = new Set(namesArray.flat());
-            // 2. 双重数组处理管道
-            return dataArray
-                // 过滤步骤：保留名称存在于目标集合的元素
-                .filter(([name]) => nameSet.has(name))
-                // 映射步骤：提取URL值
-                .map(([name, url]) => url);
+          // 1. 创建名称集合（Set）实现O(1)时间复杂度的查找
+          const nameSet = new Set(namesArray.flat());
+          // 2. 双重数组处理管道
+          return (
+            dataArray
+              // 过滤步骤：保留名称存在于目标集合的元素
+              .filter(([name]) => nameSet.has(name))
+              // 映射步骤：提取URL值
+              .map(([name, url]) => url)
+          );
         }
 
-        const queryString = parseSearch();
-        if (!queryString.url_source) {
-            //免得手机端自己输入
-            window.location.href = window.location.href + "?url_source=1&ym_source=1";
+        const queryString = new URLSearchParams(window.location.search);
+        if (!queryString.has("url_source")) {
+          //免得手机端自己输入
+          window.location.href =
+            window.location.href + "?url_source=1&ym_source=1";
         }
-        let sourceUrls = []
+        let sourceUrls = [];
         // 链接来源
-        if (queryString.url_source == '1') {
-            sourceUrls = zh_yyys_urls;
+        if (queryString.get("url_source") == "1") {
+          sourceUrls = zh_yyys_urls;
         } else {
-            sourceUrls = xg_jhdx_urls;
+          sourceUrls = xg_jhdx_urls;
         }
 
-        let sourceYms = []
+        let sourceYms = [];
         // 药名来源
-        if (queryString.ym_source == '1') {
-            sourceYms = shl_ym_zh_yyys_ext;
+        if (queryString.get("ym_source") == "1") {
+          sourceYms = get_only_nihaixia_shl_ym_ext();
+        } else if (queryString.get("ym_source") == "2") {
+          sourceYms = get_only_nihaixia_jk_ym_ext();
+        } else if (queryString.get("ym_source") == "3") {
+          sourceYms = get_only_nihaixia_shl_and_jk_ym_ext();
         } else {
-            sourceYms = shl_ym_zh_yyys_ext;
+          sourceYms = get_all_nihaixia_slbcj_ym_ext();
         }
+        // 随机药名
+        const random_ym_arr =
+          sourceYms[Math.floor(Math.random() * sourceYms.length)];
 
-        // 链接数组
-        const links = filterUrls(sourceUrls, sourceYms);
+        const random_link = sourceUrls.find(([name]) =>
+          random_ym_arr.includes(name)
+        )?.[1];
 
-        // 执行洗牌并设置iframe地址
-        (function init() {
-            // 创建数组副本避免修改原数组
-            const random_link = links[Math.floor(Math.random() * links.length)];
-            console.log(random_link); // Check the shuffled array in the console
-            link = document.querySelector("#link");
-            link.href = random_link;
-            setTimeout(() => link.click(), 100); // 延迟触发
-            // 备用方案（兼容性处理）
-            setTimeout(() => {
-                link.dispatchEvent(new MouseEvent('click', {
-                    bubbles: true,
-                    cancelable: true,
-                    view: window
-                }));
-            }, 3000);
-        })();
+        if (random_link === undefined) {
+          location.reload();
+        }
+        
+        link = document.querySelector("#link");
+        link.href = random_link;
+        setTimeout(() => link.click(), 100); // 延迟触发
+        // 备用方案（兼容性处理）
+        setTimeout(() => {
+          link.dispatchEvent(
+            new MouseEvent("click", {
+              bubbles: true,
+              cancelable: true,
+              view: window,
+            })
+          );
+        }, 3000);
+      })();
     </script>
-</body>
-
+  </body>
 </html>

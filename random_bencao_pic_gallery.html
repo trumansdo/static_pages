@@ -23,10 +23,64 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
     <script type="module">
         let vConsole = new window.VConsole();
-        let file_paths = source_file_paths;
-        let ym_arr = shl_ym_zh_yyys_ext;
-        let random_ym_arr = shl_ym_zh_yyys_ext[Math.floor(Math.random() * shl_ym_zh_yyys_ext.length)];
+        const queryString = new URLSearchParams(window.location.search);
+        let path_source = queryString.get("path_source");
 
+        if (!queryString.has("path_source")) {
+            path_source = '1';
+        }
+
+        let file_paths = {};
+        if (path_source == '1') {
+            // 全部分文件路径，包括伪品的
+            for (const key in source_file_paths) {
+                file_paths[key] = source_file_paths[key]
+                    .filter(([_, num]) => num === 1 || num === 2)
+                    .map(([path]) => path);
+            }
+        } else {
+            // 只包括正品的文件路径
+            for (const key in source_file_paths) {
+                file_paths[key] = source_file_paths[key]
+                    .filter(([_, num]) => num === 1)
+                    .map(([path]) => path);
+            }
+        }
+
+        let ym_source = queryString.get("ym_source");
+        if (!queryString.has("ym_source")) {
+            ym_source = '1';
+        }
+        let ym_arr = [];
+        if (ym_source == '1') {
+            // 仅伤寒论药材
+            ym_arr = get_only_nihaixia_shl_ym_ext();
+        } else if (ym_source == '2') {
+            // 仅金匮的药材
+            ym_arr = get_only_nihaixia_jk_ym_ext();
+        } else if (ym_source == '3') {
+            // 伤寒与金匮的
+            // 神农本草经全部的
+            ym_arr = get_only_nihaixia_shl_and_jk_ym_ext();
+        } else if (ym_source == '0') {
+            // 神农本草经全部的
+            ym_arr = get_all_nihaixia_slbcj_ym_ext();
+        } else if (ym_source == '4') {
+            // 神农本草经中排除伤寒之外的药材
+            ym_arr = get_exclude_nihaixia_shl_ym_ext();
+        }else {
+            // 全部
+            ym_arr = undefined;
+        }
+
+        // 以下是生成图片浏览画廊的
+        let random_ym_arr;
+        if (ym_arr == undefined) {
+            const keys = Object.keys(file_paths); // 获取所有键 [[1]]
+            random_ym_arr = [keys[Math.floor(Math.random() * keys.length)]]; // 返回随机键
+        } else {
+            random_ym_arr = ym_arr[Math.floor(Math.random() * ym_arr.length)];
+        }
         const matched_ym = random_ym_arr.find(key => key in file_paths);
         const files = file_paths[matched_ym];
         if (files === undefined) {
