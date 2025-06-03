@@ -1,184 +1,202 @@
 <!DOCTYPE html>
 <html lang="zh">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>伤寒论涉及药材图片浏览器</title>
     <!-- 引入样式 -->
-    <link href="https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe.css" rel="stylesheet">
     <link
-        href="https://cdn.bootcdn.net/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.css"
-        rel="stylesheet">
-</head>
+      href="https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <!-- 图片画廊 -->
-    <div id="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-
-    </div>
+    <div
+      id="my-gallery"
+      itemscope
+      itemtype="http://schema.org/ImageGallery"
+    ></div>
 
     <script src="data/vars.js"></script>
     <script src="data/figure_data.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/device.js/0.2.7/device.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
     <script type="module">
-        let vConsole = new window.VConsole();
-        const queryString = new URLSearchParams(window.location.search);
-        let path_source = queryString.get("path_source");
+      let vConsole = new window.VConsole();
+      const queryString = new URLSearchParams(window.location.search);
+      let path_source = queryString.get("path_source");
 
-        if (!queryString.has("path_source")) {
-            path_source = '1';
+      if (!queryString.has("path_source")) {
+        path_source = "1";
+      }
+
+      let file_paths = {};
+      if (path_source == "1") {
+        // 全部分文件路径，包括伪品的
+        for (const key in source_file_paths) {
+          file_paths[key] = source_file_paths[key]
+            .filter(([_, num]) => num === 1 || num === 2)
+            .map(([path]) => path);
         }
-
-        let file_paths = {};
-        if (path_source == '1') {
-            // 全部分文件路径，包括伪品的
-            for (const key in source_file_paths) {
-                file_paths[key] = source_file_paths[key]
-                    .filter(([_, num]) => num === 1 || num === 2)
-                    .map(([path]) => path);
-            }
-        } else {
-            // 只包括正品的文件路径
-            for (const key in source_file_paths) {
-                file_paths[key] = source_file_paths[key]
-                    .filter(([_, num]) => num === 1)
-                    .map(([path]) => path);
-            }
+      } else {
+        // 只包括正品的文件路径
+        for (const key in source_file_paths) {
+          file_paths[key] = source_file_paths[key]
+            .filter(([_, num]) => num === 1)
+            .map(([path]) => path);
         }
+      }
 
-        let ym_source = queryString.get("ym_source");
-        if (!queryString.has("ym_source")) {
-            ym_source = '1';
-        }
-        let ym_arr = [];
-        if (ym_source == '1') {
-            // 仅伤寒论药材
-            ym_arr = get_only_nihaixia_shl_ym_ext();
-        } else if (ym_source == '2') {
-            // 仅金匮的药材
-            ym_arr = get_only_nihaixia_jk_ym_ext();
-        } else if (ym_source == '3') {
-            // 伤寒与金匮的
-            // 神农本草经全部的
-            ym_arr = get_only_nihaixia_shl_and_jk_ym_ext();
-        } else if (ym_source == '0') {
-            // 神农本草经全部的
-            ym_arr = get_all_nihaixia_slbcj_ym_ext();
-        } else if (ym_source == '4') {
-            // 神农本草经中排除伤寒之外的药材
-            ym_arr = get_exclude_nihaixia_shl_ym_ext();
-        }else {
-            // 全部
-            ym_arr = undefined;
-        }
+      let ym_source = queryString.get("ym_source");
+      if (!queryString.has("ym_source")) {
+        ym_source = "1";
+      }
+      let ym_arr = [];
+      if (ym_source == "1") {
+        // 仅伤寒论药材
+        ym_arr = get_only_nihaixia_shl_ym_ext();
+      } else if (ym_source == "2") {
+        // 仅金匮的药材
+        ym_arr = get_only_nihaixia_jk_ym_ext();
+      } else if (ym_source == "3") {
+        // 伤寒与金匮的
+        // 神农本草经全部的
+        ym_arr = get_only_nihaixia_shl_and_jk_ym_ext();
+      } else if (ym_source == "0") {
+        // 神农本草经全部的
+        ym_arr = get_all_nihaixia_slbcj_ym_ext();
+      } else if (ym_source == "4") {
+        // 神农本草经中排除伤寒之外的药材
+        ym_arr = get_exclude_nihaixia_shl_ym_ext();
+      } else {
+        // 全部
+        ym_arr = undefined;
+      }
 
-        // 以下是生成图片浏览画廊的
-        let random_ym_arr;
-        if (ym_arr == undefined) {
-            const keys = Object.keys(file_paths); // 获取所有键 [[1]]
-            random_ym_arr = [keys[Math.floor(Math.random() * keys.length)]]; // 返回随机键
-        } else {
-            random_ym_arr = ym_arr[Math.floor(Math.random() * ym_arr.length)];
-        }
-        const matched_ym = random_ym_arr.find(key => key in file_paths);
-        const files = file_paths[matched_ym];
-        if (files === undefined) {
-            location.reload();
-        }
+      // 以下是生成图片浏览画廊的
+      let random_ym_arr;
+      if (ym_arr == undefined) {
+        const keys = Object.keys(file_paths); // 获取所有键 [[1]]
+        random_ym_arr = [keys[Math.floor(Math.random() * keys.length)]]; // 返回随机键
+      } else {
+        random_ym_arr = ym_arr[Math.floor(Math.random() * ym_arr.length)];
+      }
+      // todo 这里可能需要调整一下，因为名称包含了别名，别名可能有重复的，所以尽可能这个先洗牌，然后按照顺序尝试加载
+      const matched_ym = random_ym_arr.find((key) => key in file_paths);
+      const files = file_paths[matched_ym];
+      if (files === undefined) {
+        location.reload();
+      }
 
-        const gallery = document.getElementById("my-gallery");
-        const pageWidth = window.innerWidth;
+      const gallery = document.getElementById("my-gallery");
+      const pageWidth = window.innerWidth;
 
-        // 将每个图片加载包装成一个 Promise，并保留其在数组中的位置
-        const loadImagePromises = files.map((path, index) => {
-            return new Promise(resolve => {
-                const whole_path = "figure/" + path;
-                const img = new Image();
-                img.src = whole_path;
+      // 将每个图片加载包装成一个 Promise，并保留其在数组中的位置
+      const loadImagePromises = files.map((path, index) => {
+        return new Promise((resolve) => {
+          const whole_path = "figure/" + path;
+          const img = new Image();
+          img.src = whole_path;
 
-                img.onload = () => {
-                    const originalWidth = img.naturalWidth;
-                    const originalHeight = img.naturalHeight;
-                    const displayWidth = Math.min(originalWidth, pageWidth);
-                    const displayHeight = (originalHeight / originalWidth) * displayWidth;
+          img.onload = () => {
+            const originalWidth = img.naturalWidth;
+            const originalHeight = img.naturalHeight;
+            const displayWidth = device.mobile()
+              ? pageWidth
+              : Math.min(originalWidth, pageWidth);
+            const displayHeight =
+              (originalHeight / originalWidth) * displayWidth;
+            // 创建 DOM 元素
+            const gallery_item_div = document.createElement("div");
+            gallery_item_div.className = "pswp-gallery__item";
 
-                    // 创建 DOM 元素
-                    const gallery_item_div = document.createElement("div");
-                    gallery_item_div.className = "pswp-gallery__item";
+            const link = document.createElement("a");
+            link.href = "javascript:void(0)";
+            link.setAttribute("data-pswp-src", whole_path);
+            link.setAttribute("data-pswp-width", displayWidth);
+            link.setAttribute("data-pswp-height", Math.round(displayHeight));
+            link.target = "_blank";
 
-                    const link = document.createElement("a");
-                    link.href = "javascript:void(0)";
-                    link.setAttribute("data-pswp-src", whole_path);
-                    link.setAttribute("data-pswp-width", displayWidth);
-                    link.setAttribute("data-pswp-height", Math.round(displayHeight));
-                    link.target = "_blank";
+            const imageElement = document.createElement("img");
+            imageElement.src = img.src;
+            imageElement.alt = matched_ym;
+            imageElement.width = displayWidth;
+            imageElement.height = Math.round(displayHeight);
+            imageElement.style.width = displayWidth + "px";
+            imageElement.style.height = Math.round(displayHeight) + "px";
 
-                    const imageElement = document.createElement("img");
-                    imageElement.src = whole_path;
-                    imageElement.alt = matched_ym;
-                    imageElement.width = displayWidth;
-                    imageElement.height = Math.round(displayHeight);
-                    imageElement.style.width = displayWidth + 'px';
-                    imageElement.style.height = Math.round(displayHeight) + 'px';
+            link.appendChild(imageElement);
+            gallery_item_div.appendChild(link);
 
-                    link.appendChild(imageElement);
-                    gallery_item_div.appendChild(link);
+            const captionDiv = document.createElement("div");
+            captionDiv.className = "pswp-caption-content";
+            captionDiv.textContent = path
+              .split("/")
+              .slice(1, 2)
+              .join("")
+              .split(".")[0];
+            gallery_item_div.appendChild(captionDiv);
 
-                    const captionDiv = document.createElement("div");
-                    captionDiv.className = "pswp-caption-content";
-                    captionDiv.textContent = path.split("/").slice(1, 2).join("").split(".")[0];
-                    gallery_item_div.appendChild(captionDiv);
+            resolve({ index, element: gallery_item_div }); // 返回索引和元素
+          };
 
-                    resolve({ index, element: gallery_item_div }); // 返回索引和元素
-                };
+          img.onerror = () => {
+            console.error("图片加载失败:", path);
+            resolve(null); // 失败也继续处理
+          };
+        });
+      });
 
-                img.onerror = () => {
-                    console.error("图片加载失败:", path);
-                    resolve(null); // 失败也继续处理
-                };
-            });
+      // 并发加载所有图片并按顺序插入 DOM
+      Promise.all(loadImagePromises).then((results) => {
+        // 过滤掉 null（加载失败的情况）
+        const validResults = results.filter((result) => result !== null);
+
+        // 按原始顺序排序
+        validResults.sort((a, b) => a.index - b.index);
+
+        // 插入到容器中
+        validResults.forEach(({ element }) => {
+          gallery.appendChild(element);
         });
 
-        // 并发加载所有图片并按顺序插入 DOM
-        Promise.all(loadImagePromises).then(results => {
-            // 过滤掉 null（加载失败的情况）
-            const validResults = results.filter(result => result !== null);
+        // 初始化 PhotoSwipe
+        import(
+          "https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe-lightbox.esm.js "
+        ).then((module) => {
+          const PhotoSwipeLightbox = module.default;
+          const lightbox = new PhotoSwipeLightbox({
+            gallery: "#my-gallery",
+            childSelector: ".pswp-gallery__item",
+            pswpModule: () =>
+              import(
+                "https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe.esm.js "
+              ),
+            initialZoomLevel: "fit",
+            secondaryZoomLevel: 1,
+            maxZoomLevel: 10,
+          });
 
-            // 按原始顺序排序
-            validResults.sort((a, b) => a.index - b.index);
-
-            // 插入到容器中
-            validResults.forEach(({ element }) => {
-                gallery.appendChild(element);
+          import(
+            "https://cdn.bootcdn.net/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.esm.js "
+          ).then((pluginModule) => {
+            const PhotoSwipeDynamicCaption = pluginModule.default;
+            const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+              mobileLayoutBreakpoint: 700,
+              type: "below",
+              mobileCaptionOverlapRatio: 1,
             });
 
-            // 初始化 PhotoSwipe
-            import('https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe-lightbox.esm.js ').then(module => {
-                const PhotoSwipeLightbox = module.default;
-                const lightbox = new PhotoSwipeLightbox({
-                    gallery: '#my-gallery',
-                    childSelector: '.pswp-gallery__item',
-                    pswpModule: () => import('https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe.esm.js '),
-                    initialZoomLevel: 'fit',
-                    secondaryZoomLevel: 1,
-                    maxZoomLevel: 10,
-                });
-
-                import('https://cdn.bootcdn.net/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.esm.js ').then(pluginModule => {
-                    const PhotoSwipeDynamicCaption = pluginModule.default;
-                    const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-                        mobileLayoutBreakpoint: 700,
-                        type: 'below',
-                        mobileCaptionOverlapRatio: 1
-                    });
-
-                    lightbox.init();
-                });
-            });
+            lightbox.init();
+          });
         });
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
