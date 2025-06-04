@@ -25,60 +25,42 @@
       <a id="link" href="#">等待刷新中...（如果没有变化，请手动刷新页面。）</a>
     </h1>
 
-    <script src="data/vars.js"></script>
+    <script src="data/ym_data.js"></script>
+    <script src="data/url_data.js"></script>
 
     <script>
       (function init() {
-        function filterUrls(dataArray, namesArray) {
-          // 1. 创建名称集合（Set）实现O(1)时间复杂度的查找
-          const nameSet = new Set(namesArray.flat());
-          // 2. 双重数组处理管道
-          return (
-            dataArray
-              // 过滤步骤：保留名称存在于目标集合的元素
-              .filter(([name]) => nameSet.has(name))
-              // 映射步骤：提取URL值
-              .map(([name, url]) => url)
-          );
-        }
-
         const queryString = new URLSearchParams(window.location.search);
         if (!queryString.has("url_source")) {
           //免得手机端自己输入
           window.location.href =
             window.location.href + "?url_source=1&ym_source=1";
         }
-        let sourceUrls = [];
-        // 链接来源
-        if (queryString.get("url_source") == "1") {
-          sourceUrls = zh_yyys_urls;
-        } else {
-          sourceUrls = xg_jhdx_urls;
-        }
 
         let sourceYms = [];
         // 药名来源
         if (queryString.get("ym_source") == "1") {
-          sourceYms = get_only_nihaixia_shl_ym_ext();
+          sourceYms = random_only_nihaixia_shl_ym_ext();
         } else if (queryString.get("ym_source") == "2") {
-          sourceYms = get_only_nihaixia_jk_ym_ext();
+          sourceYms = random_only_nihaixia_jk_ym_ext();
         } else if (queryString.get("ym_source") == "3") {
-          sourceYms = get_only_nihaixia_shl_and_jk_ym_ext();
+          sourceYms = random_only_nihaixia_shl_and_jk_ym_ext();
         } else {
-          sourceYms = get_all_nihaixia_slbcj_ym_ext();
-        }
-        // 随机药名
-        const random_ym_arr =
-          sourceYms[Math.floor(Math.random() * sourceYms.length)];
-
-        const random_link = sourceUrls.find(([name]) =>
-          random_ym_arr.includes(name)
-        )?.[1];
-
-        if (random_link === undefined) {
-          location.reload();
+          sourceYms = random_all_nihaixia_slbcj_ym_ext();
         }
         
+        let random_link = null;
+        // 链接来源
+        if (queryString.get("url_source") == "1") {
+          random_link = random_zh_yyys_urls(sourceYms);
+        } else {
+          random_link = random_xg_jhdx_urls(sourceYms);
+        }
+
+        if (random_link === undefined || random_link == null) {
+          location.reload();
+        }
+
         link = document.querySelector("#link");
         link.href = random_link;
         setTimeout(() => link.click(), 100); // 延迟触发
