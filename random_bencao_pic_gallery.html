@@ -100,8 +100,9 @@
           const whole_path = "figure/" + path;
           const img = new Image();
           img.src = whole_path;
-          console.log(`进入第${index}个Promise，图片路径为：${whole_path}`);
-          img.onload = () => {
+
+          // 封装图片处理逻辑
+          const handleImageLoad = () => {
             const originalWidth = img.naturalWidth;
             const originalHeight = img.naturalHeight;
             const displayWidth = device.mobile()
@@ -109,14 +110,14 @@
               : Math.min(originalWidth, pageWidth);
             const displayHeight =
               (originalHeight / originalWidth) * displayWidth;
-            console.log(
-              `进入第${index}个onload函数，图片路径为：${whole_path}`
-            );
-            // 通过 data-index 找到对应位置的占位元素
-            const gallery_item_div = document.querySelector(
+
+            // 找到对应位置的占位元素
+            const galleryItem = document.querySelector(
               `.pswp-gallery__item[data-index="${index}"]`
             );
+            galleryItem.innerHTML = ""; // 清空占位
 
+            // 创建 a 标签（PhotoSwipe 触发点）
             const link = document.createElement("a");
             link.href = "javascript:void(0)";
             link.setAttribute("data-pswp-src", whole_path);
@@ -124,6 +125,7 @@
             link.setAttribute("data-pswp-height", Math.round(displayHeight));
             link.target = "_blank";
 
+            // 创建 img 标签
             const imageElement = document.createElement("img");
             imageElement.src = img.src;
             imageElement.alt = ym_arr.join("|");
@@ -133,8 +135,9 @@
             imageElement.style.height = Math.round(displayHeight) + "px";
 
             link.appendChild(imageElement);
-            gallery_item_div.appendChild(link);
+            galleryItem.appendChild(link);
 
+            // 创建 caption
             const captionDiv = document.createElement("div");
             captionDiv.className = "pswp-caption-content";
             captionDiv.textContent = path
@@ -142,15 +145,23 @@
               .slice(1, 2)
               .join("")
               .split(".")[0];
-            gallery_item_div.appendChild(captionDiv);
+            galleryItem.appendChild(captionDiv);
 
-            resolve({ index, element: gallery_item_div }); // 返回索引和元素
+            resolve({ index, element: galleryItem });
           };
 
-          img.onerror = () => {
-            console.error("图片加载失败:", path);
-            resolve(null); // 失败也继续处理
-          };
+          // 处理缓存加载（img.complete）
+          if (img.complete && img.naturalWidth !== 0) {
+            console.log(`第${index}个图片使用了缓存图片。`);
+            handleImageLoad();
+          } else {
+            console.log(`第${index}个图片没用缓存图片。`);
+            img.addEventListener("load", handleImageLoad);
+            img.addEventListener("error", () => {
+              console.error("图片加载失败:", path);
+              resolve(null);
+            });
+          }
         });
       });
 
