@@ -1,3 +1,4 @@
+// type： 1 正品，2 伪品
 const source_file_paths = [
   {
     dir: "一枝黄花",
@@ -141,6 +142,10 @@ const source_file_paths = [
   {
     dir: "三七",
     files: [
+      {
+        path: "三七/000_止血药_三七.jpg",
+        type: [1],
+      },
       {
         path: "三七/010_三七人工种植.jpg",
         type: [1],
@@ -530,6 +535,14 @@ const source_file_paths = [
     dir: "丹参",
     files: [
       {
+        path: "丹参/000_活血药_丹参.jpg",
+        type: [1],
+      },
+      {
+        path: "丹参/000_活血药_丹参2.jpg",
+        type: [1],
+      },
+      {
         path: "丹参/010_丹参植物.jpg",
         type: [1],
       },
@@ -599,6 +612,10 @@ const source_file_paths = [
   {
     dir: "乌梅",
     files: [
+      {
+        path: "乌梅/000_收涩药_乌梅.jpg",
+        type: [1],
+      },
       {
         path: "乌梅/010_梅植物.jpg",
         type: [1],
@@ -753,6 +770,14 @@ const source_file_paths = [
     dir: "九节菖蒲",
     files: [
       {
+        path: "九节菖蒲/000_开窍药_石菖蒲.jpg",
+        type: [1],
+      },
+      {
+        path: "九节菖蒲/000_开窍药_石菖蒲2.jpg",
+        type: [1],
+      },
+      {
         path: "九节菖蒲/010_阿尔泰银莲花.jpg",
         type: [1],
       },
@@ -875,6 +900,10 @@ const source_file_paths = [
   {
     dir: "乳香",
     files: [
+      {
+        path: "乳香/000_活血药_乳香.jpg",
+        type: [1],
+      },
       {
         path: "乳香/010_乳香树植物.jpg",
         type: [1],
@@ -1030,6 +1059,10 @@ const source_file_paths = [
     dir: "五加皮",
     files: [
       {
+        path: "五加皮/000_祛风湿药_五加皮.jpg",
+        type: [1],
+      },
+      {
         path: "五加皮/010_细柱五加植物.jpg",
         type: [1],
       },
@@ -1074,6 +1107,10 @@ const source_file_paths = [
   {
     dir: "五味子",
     files: [
+      {
+        path: "五味子/000_收涩药_五味子.jpg",
+        type: [1],
+      },
       {
         path: "五味子/010_五味子植物.jpg",
         type: [1],
@@ -1276,6 +1313,14 @@ const source_file_paths = [
     dir: "京大戟",
     files: [
       {
+        path: "京大戟/000_泻下药_京大戟.jpg",
+        type: [1],
+      },
+      {
+        path: "京大戟/000_泻下药_京大戟2.jpg",
+        type: [1],
+      },
+      {
         path: "京大戟/010_大戟植物.jpg",
         type: [1],
       },
@@ -1336,6 +1381,18 @@ const source_file_paths = [
   {
     dir: "人参",
     files: [
+      {
+        path: "人参/000_补虚药_人参.jpg",
+        type: [1],
+      },
+      {
+        path: "人参/000_补虚药_人参2.jpg",
+        type: [1],
+      },
+      {
+        path: "人参/000_补虚药_人参切片.jpg",
+        type: [1],
+      },
       {
         path: "人参/010_人参原植物.jpg",
         type: [1],
@@ -1787,6 +1844,10 @@ const source_file_paths = [
     dir: "佩兰",
     files: [
       {
+        path: "佩兰/000_化湿药_佩兰.jpg",
+        type: [1],
+      },
+      {
         path: "佩兰/010_佩兰.jpg",
         type: [1],
       },
@@ -1877,6 +1938,10 @@ const source_file_paths = [
     dir: "侧柏叶",
     files: [
       {
+        path: "侧柏叶/000_止血药_侧柏叶.jpg",
+        type: [1],
+      },
+      {
         path: "侧柏叶/010_侧柏.jpg",
         type: [1],
       },
@@ -1929,6 +1994,10 @@ const source_file_paths = [
   {
     dir: "僵蚕",
     files: [
+      {
+        path: "僵蚕/000_熄风止痉药_僵蚕.jpg",
+        type: [1],
+      },
       {
         path: "僵蚕/010_家蚕.jpg",
         type: [1],
@@ -2311,6 +2380,10 @@ const source_file_paths = [
     dir: "兰草",
     files: [
       {
+        path: "兰草/000_化湿药_佩兰.jpg",
+        type: [1],
+      },
+      {
         path: "兰草/010_倪注神农本草经.jpg",
         type: [1],
       },
@@ -2519,6 +2592,10 @@ const source_file_paths = [
   {
     dir: "决明子",
     files: [
+      {
+        path: "决明子/000_清热药_决明子.jpg",
+        type: [1],
+      },
       {
         path: "决明子/010_钝叶决明.jpg",
         type: [1],
@@ -3060,6 +3137,14 @@ const source_file_paths = [
     dir: "北沙参",
     files: [
       {
+        path: "北沙参/000_补虚药_北沙参.jpg",
+        type: [1],
+      },
+      {
+        path: "北沙参/000_补虚药_南沙参.jpg",
+        type: [1],
+      },
+      {
         path: "北沙参/010_珊瑚菜.jpg",
         type: [1],
       },
@@ -3371,6 +3456,18 @@ const source_file_paths = [
     dir: "半夏",
     files: [
       {
+        path: "半夏/000_化痰药_半夏.jpg",
+        type: [1],
+      },
+      {
+        path: "半夏/000_化痰药_天南星.jpg",
+        type: [1],
+      },
+      {
+        path: "半夏/000_化痰药_天南星2.jpg",
+        type: [1],
+      },
+      {
         path: "半夏/010_半夏植物.jpg",
         type: [1],
       },
@@ -3596,6 +3693,14 @@ const source_file_paths = [
     dir: "南沙参",
     files: [
       {
+        path: "南沙参/000_补虚药_北沙参.jpg",
+        type: [1],
+      },
+      {
+        path: "南沙参/000_补虚药_南沙参.jpg",
+        type: [1],
+      },
+      {
         path: "南沙参/010_轮叶沙参.jpg",
         type: [1],
       },
@@ -3795,6 +3900,14 @@ const source_file_paths = [
     dir: "厚朴",
     files: [
       {
+        path: "厚朴/000_化湿药_厚朴.jpg",
+        type: [1],
+      },
+      {
+        path: "厚朴/000_化湿药_厚朴2.jpg",
+        type: [1],
+      },
+      {
         path: "厚朴/010_厚朴植物.jpg",
         type: [1],
       },
@@ -3947,6 +4060,10 @@ const source_file_paths = [
     dir: "合欢皮",
     files: [
       {
+        path: "合欢皮/000_安神药_合欢皮.jpg",
+        type: [1],
+      },
+      {
         path: "合欢皮/010_合欢植物.jpg",
         type: [1],
       },
@@ -4020,6 +4137,10 @@ const source_file_paths = [
   {
     dir: "吴茱萸",
     files: [
+      {
+        path: "吴茱萸/000_温里药_吴茱萸.jpg",
+        type: [1],
+      },
       {
         path: "吴茱萸/010_吴茱萸植物.jpg",
         type: [1],
@@ -4110,6 +4231,10 @@ const source_file_paths = [
   {
     dir: "商陆",
     files: [
+      {
+        path: "商陆/000_泻下药_商陆.jpg",
+        type: [1],
+      },
       {
         path: "商陆/010_商陆植物.jpg",
         type: [1],
@@ -4454,6 +4579,10 @@ const source_file_paths = [
     dir: "土鳖虫",
     files: [
       {
+        path: "土鳖虫/000_活血药_土鳖.jpg",
+        type: [1],
+      },
+      {
         path: "土鳖虫/010_地鳖.jpg",
         type: [1],
       },
@@ -4544,6 +4673,10 @@ const source_file_paths = [
     dir: "地榆",
     files: [
       {
+        path: "地榆/000_止血药_地榆.jpg",
+        type: [1],
+      },
+      {
         path: "地榆/010_地榆植物.jpg",
         type: [1],
       },
@@ -4620,6 +4753,10 @@ const source_file_paths = [
   {
     dir: "地肤子",
     files: [
+      {
+        path: "地肤子/000_利水渗湿药_地肤子.jpg",
+        type: [1],
+      },
       {
         path: "地肤子/010_地肤植物.jpg",
         type: [1],
@@ -4777,6 +4914,14 @@ const source_file_paths = [
     dir: "地黄",
     files: [
       {
+        path: "地黄/000_清热药_生地黄.jpg",
+        type: [1],
+      },
+      {
+        path: "地黄/000_补虚药_熟地黄.jpg",
+        type: [1],
+      },
+      {
         path: "地黄/010_地黄植物.jpg",
         type: [1],
       },
@@ -4817,6 +4962,14 @@ const source_file_paths = [
   {
     dir: "地龙",
     files: [
+      {
+        path: "地龙/000_熄风止痉药_地龙.jpg",
+        type: [1],
+      },
+      {
+        path: "地龙/000_熄风止痉药_地龙2.jpg",
+        type: [1],
+      },
       {
         path: "地龙/010_参环毛蚓.jpg",
         type: [1],
@@ -4990,6 +5143,10 @@ const source_file_paths = [
     dir: "夏枯草",
     files: [
       {
+        path: "夏枯草/000_清热药_夏枯草.jpg",
+        type: [1],
+      },
+      {
         path: "夏枯草/010_夏枯草植物.jpg",
         type: [1],
       },
@@ -5109,6 +5266,10 @@ const source_file_paths = [
     dir: "大枣",
     files: [
       {
+        path: "大枣/000_补虚药_大枣.jpg",
+        type: [1],
+      },
+      {
         path: "大枣/010_大枣植物.jpg",
         type: [1],
       },
@@ -5129,6 +5290,10 @@ const source_file_paths = [
   {
     dir: "大皂角",
     files: [
+      {
+        path: "大皂角/000_化痰药_皂角.jpg",
+        type: [1],
+      },
       {
         path: "大皂角/010_皂荚植物.jpg",
         type: [1],
@@ -5455,6 +5620,10 @@ const source_file_paths = [
     dir: "大黄",
     files: [
       {
+        path: "大黄/000_泻下药_大黄.jpg",
+        type: [1],
+      },
+      {
         path: "大黄/010_掌叶大黄植物.jpg",
         type: [1],
       },
@@ -5658,6 +5827,10 @@ const source_file_paths = [
     dir: "天冬",
     files: [
       {
+        path: "天冬/000_补虚药_天冬.jpg",
+        type: [1],
+      },
+      {
         path: "天冬/010_天冬植物.jpg",
         type: [1],
       },
@@ -5690,6 +5863,18 @@ const source_file_paths = [
   {
     dir: "天南星",
     files: [
+      {
+        path: "天南星/000_化痰药_半夏.jpg",
+        type: [1],
+      },
+      {
+        path: "天南星/000_化痰药_天南星.jpg",
+        type: [1],
+      },
+      {
+        path: "天南星/000_化痰药_天南星2.jpg",
+        type: [1],
+      },
       {
         path: "天南星/010_天南星.jpg",
         type: [1],
@@ -5818,6 +6003,10 @@ const source_file_paths = [
   {
     dir: "天花粉",
     files: [
+      {
+        path: "天花粉/000_清热药_天花粉.jpg",
+        type: [1],
+      },
       {
         path: "天花粉/010_栝楼植物.jpg",
         type: [1],
@@ -5970,6 +6159,14 @@ const source_file_paths = [
     dir: "天麻",
     files: [
       {
+        path: "天麻/000_熄风止痉药_天麻.jpg",
+        type: [1],
+      },
+      {
+        path: "天麻/000_熄风止痉药_天麻切片.jpg",
+        type: [1],
+      },
+      {
         path: "天麻/010_天麻植物.jpg",
         type: [1],
       },
@@ -6108,6 +6305,10 @@ const source_file_paths = [
     dir: "女贞子",
     files: [
       {
+        path: "女贞子/000_补虚药_女贞子.jpg",
+        type: [1],
+      },
+      {
         path: "女贞子/010_女贞植物.jpg",
         type: [1],
       },
@@ -6211,6 +6412,10 @@ const source_file_paths = [
   {
     dir: "姜黄",
     files: [
+      {
+        path: "姜黄/000_活血药_姜黄.jpg",
+        type: [1],
+      },
       {
         path: "姜黄/010_姜黄植物.jpg",
         type: [1],
@@ -6519,6 +6724,10 @@ const source_file_paths = [
     dir: "射干",
     files: [
       {
+        path: "射干/000_清热药_射干.jpg",
+        type: [1],
+      },
+      {
         path: "射干/010_射干植物.jpg",
         type: [1],
       },
@@ -6794,6 +7003,10 @@ const source_file_paths = [
     dir: "小麦",
     files: [
       {
+        path: "小麦/000_收涩药_浮小麦.jpg",
+        type: [1],
+      },
+      {
         path: "小麦/010_倪注神农本草经.jpg",
         type: [1],
       },
@@ -7028,6 +7241,10 @@ const source_file_paths = [
     dir: "山茱萸",
     files: [
       {
+        path: "山茱萸/000_收涩药_山茱萸.jpg",
+        type: [1],
+      },
+      {
         path: "山茱萸/010_山茱萸花.jpg",
         type: [1],
       },
@@ -7080,6 +7297,10 @@ const source_file_paths = [
   {
     dir: "山药",
     files: [
+      {
+        path: "山药/000_补虚药_山药.jpg",
+        type: [1],
+      },
       {
         path: "山药/010_山药植物.jpg",
         type: [1],
@@ -7742,6 +7963,10 @@ const source_file_paths = [
     dir: "川楝子",
     files: [
       {
+        path: "川楝子/000_行气药_川楝子.jpg",
+        type: [1],
+      },
+      {
         path: "川楝子/010_川楝植物.jpg",
         type: [1],
       },
@@ -7782,6 +8007,18 @@ const source_file_paths = [
   {
     dir: "川牛膝",
     files: [
+      {
+        path: "川牛膝/000_活血药_川牛膝饮片.jpg",
+        type: [1],
+      },
+      {
+        path: "川牛膝/000_活血药_怀牛膝.jpg",
+        type: [1],
+      },
+      {
+        path: "川牛膝/000_活血药_牛膝.jpg",
+        type: [1],
+      },
       {
         path: "川牛膝/010_川牛膝植物.jpg",
         type: [1],
@@ -7864,6 +8101,14 @@ const source_file_paths = [
     dir: "川芎",
     files: [
       {
+        path: "川芎/000_活血药_川芎.jpg",
+        type: [1],
+      },
+      {
+        path: "川芎/000_活血药_川芎2.jpg",
+        type: [1],
+      },
+      {
         path: "川芎/010_川芎人工种植.jpg",
         type: [1],
       },
@@ -7920,6 +8165,14 @@ const source_file_paths = [
   {
     dir: "川贝母",
     files: [
+      {
+        path: "川贝母/000_化痰药_川贝母.jpg",
+        type: [1],
+      },
+      {
+        path: "川贝母/000_化痰药_浙贝母.jpg",
+        type: [1],
+      },
       {
         path: "川贝母/010_川贝母.jpg",
         type: [1],
@@ -8042,6 +8295,10 @@ const source_file_paths = [
     dir: "巴戟天",
     files: [
       {
+        path: "巴戟天/000_补虚药_巴戟天.jpg",
+        type: [1],
+      },
+      {
         path: "巴戟天/010_巴戟天植物.jpg",
         type: [1],
       },
@@ -8151,6 +8408,10 @@ const source_file_paths = [
     dir: "巴豆",
     files: [
       {
+        path: "巴豆/000_泻下药_巴豆.jpg",
+        type: [1],
+      },
+      {
         path: "巴豆/010_巴豆植物.jpg",
         type: [1],
       },
@@ -8221,6 +8482,10 @@ const source_file_paths = [
     dir: "常山",
     files: [
       {
+        path: "常山/000_涌吐药_常山.jpg",
+        type: [1],
+      },
+      {
         path: "常山/010_常山植物.jpg",
         type: [1],
       },
@@ -8289,6 +8554,14 @@ const source_file_paths = [
   {
     dir: "干姜",
     files: [
+      {
+        path: "干姜/000_止血药_炮姜.jpg",
+        type: [1],
+      },
+      {
+        path: "干姜/000_温里药_干姜.jpg",
+        type: [1],
+      },
       {
         path: "干姜/010_姜植物.jpg",
         type: [1],
@@ -8667,6 +8940,14 @@ const source_file_paths = [
     dir: "当归",
     files: [
       {
+        path: "当归/000_补虚药_当归.jpg",
+        type: [1],
+      },
+      {
+        path: "当归/000_补虚药_当归2.jpg",
+        type: [1],
+      },
+      {
         path: "当归/010_当归种植.jpg",
         type: [1],
       },
@@ -9042,6 +9323,10 @@ const source_file_paths = [
   {
     dir: "旋覆花",
     files: [
+      {
+        path: "旋覆花/000_化痰药_旋覆花.jpg",
+        type: [1],
+      },
       {
         path: "旋覆花/010_旋覆花植物.jpg",
         type: [1],
@@ -9498,6 +9783,14 @@ const source_file_paths = [
     dir: "木通",
     files: [
       {
+        path: "木通/000_利水渗湿药_木通.jpg",
+        type: [1],
+      },
+      {
+        path: "木通/000_利水渗湿药_木通2.jpg",
+        type: [1],
+      },
+      {
         path: "木通/010_木通植物.jpg",
         type: [1],
       },
@@ -9555,6 +9848,14 @@ const source_file_paths = [
     dir: "木防己",
     files: [
       {
+        path: "木防己/000_祛风湿药_防己.jpg",
+        type: [1],
+      },
+      {
+        path: "木防己/000_祛风湿药_防己2.jpg",
+        type: [1],
+      },
+      {
         path: "木防己/010_木防己植物.jpg",
         type: [1],
       },
@@ -9591,6 +9892,14 @@ const source_file_paths = [
   {
     dir: "木香",
     files: [
+      {
+        path: "木香/000_行气药_木香.jpg",
+        type: [1],
+      },
+      {
+        path: "木香/000_行气药_木香2.jpg",
+        type: [1],
+      },
       {
         path: "木香/010_木香植物.jpg",
         type: [1],
@@ -9750,6 +10059,10 @@ const source_file_paths = [
     dir: "朱砂",
     files: [
       {
+        path: "朱砂/000_安神药_朱砂.jpg",
+        type: [1],
+      },
+      {
         path: "朱砂/010_朱砂原石.jpg",
         type: [1],
       },
@@ -9844,6 +10157,10 @@ const source_file_paths = [
   {
     dir: "杜仲",
     files: [
+      {
+        path: "杜仲/000_补虚药_杜仲.jpg",
+        type: [1],
+      },
       {
         path: "杜仲/010_杜仲植物.jpg",
         type: [1],
@@ -10162,6 +10479,10 @@ const source_file_paths = [
     dir: "枳实",
     files: [
       {
+        path: "枳实/000_行气药_枳实.jpg",
+        type: [1],
+      },
+      {
         path: "枳实/010_酸橙植物.jpg",
         type: [1],
       },
@@ -10232,6 +10553,10 @@ const source_file_paths = [
     dir: "枸杞子",
     files: [
       {
+        path: "枸杞子/000_补虚药_枸杞子.jpg",
+        type: [1],
+      },
+      {
         path: "枸杞子/010_枸杞植物.jpg",
         type: [1],
       },
@@ -10297,6 +10622,10 @@ const source_file_paths = [
   {
     dir: "柏子仁",
     files: [
+      {
+        path: "柏子仁/000_安神药_柏子仁.jpg",
+        type: [1],
+      },
       {
         path: "柏子仁/010_侧柏植物.jpg",
         type: [1],
@@ -10582,6 +10911,10 @@ const source_file_paths = [
     dir: "栀子",
     files: [
       {
+        path: "栀子/000_清热药_栀子.jpg",
+        type: [1],
+      },
+      {
         path: "栀子/010_栀子植物.jpg",
         type: [1],
       },
@@ -10723,6 +11056,10 @@ const source_file_paths = [
     dir: "桃仁",
     files: [
       {
+        path: "桃仁/000_活血药_桃仁.jpg",
+        type: [1],
+      },
+      {
         path: "桃仁/010_山桃树.jpg",
         type: [1],
       },
@@ -10847,6 +11184,14 @@ const source_file_paths = [
     dir: "桑寄生",
     files: [
       {
+        path: "桑寄生/000_祛风湿药_桑寄生.jpg",
+        type: [1],
+      },
+      {
+        path: "桑寄生/000_祛风湿药_桑寄生2.jpg",
+        type: [1],
+      },
+      {
         path: "桑寄生/010_桑寄生植物.jpg",
         type: [1],
       },
@@ -10942,6 +11287,10 @@ const source_file_paths = [
     dir: "桑白皮",
     files: [
       {
+        path: "桑白皮/000_止咳药_桑白皮.jpg",
+        type: [1],
+      },
+      {
         path: "桑白皮/010_桑植物.jpg",
         type: [1],
       },
@@ -10982,6 +11331,10 @@ const source_file_paths = [
   {
     dir: "桑螵蛸",
     files: [
+      {
+        path: "桑螵蛸/000_收涩药_桑螵蛸.jpg",
+        type: [1],
+      },
       {
         path: "桑螵蛸/010_大刀螂.jpg",
         type: [1],
@@ -11031,6 +11384,14 @@ const source_file_paths = [
   {
     dir: "桔梗",
     files: [
+      {
+        path: "桔梗/000_化痰药_桔梗.jpg",
+        type: [1],
+      },
+      {
+        path: "桔梗/000_化痰药_桔梗2.jpg",
+        type: [1],
+      },
       {
         path: "桔梗/010_桔梗植物.jpg",
         type: [1],
@@ -11322,6 +11683,10 @@ const source_file_paths = [
     dir: "槐实",
     files: [
       {
+        path: "槐实/000_止血药_槐花.jpg",
+        type: [1],
+      },
+      {
         path: "槐实/010_倪注神农本草经.jpg",
         type: [1],
       },
@@ -11603,6 +11968,10 @@ const source_file_paths = [
     dir: "款冬花",
     files: [
       {
+        path: "款冬花/000_止咳药_款冬花.jpg",
+        type: [1],
+      },
+      {
         path: "款冬花/010_款冬植物.jpg",
         type: [1],
       },
@@ -11793,6 +12162,10 @@ const source_file_paths = [
   {
     dir: "水蛭",
     files: [
+      {
+        path: "水蛭/000_活血药_水蛭.jpg",
+        type: [1],
+      },
       {
         path: "水蛭/010_蚂蟥.jpg",
         type: [1],
@@ -12109,6 +12482,10 @@ const source_file_paths = [
     dir: "没药",
     files: [
       {
+        path: "没药/000_活血药_没药.jpg",
+        type: [1],
+      },
+      {
         path: "没药/010_地丁树植物.jpg",
         type: [1],
       },
@@ -12223,6 +12600,14 @@ const source_file_paths = [
   {
     dir: "泽泻",
     files: [
+      {
+        path: "泽泻/000_利水渗湿药_泽泻.jpg",
+        type: [1],
+      },
+      {
+        path: "泽泻/000_利水渗湿药_泽泻2.jpg",
+        type: [1],
+      },
       {
         path: "泽泻/010_东方泽泻.jpg",
         type: [1],
@@ -12568,6 +12953,10 @@ const source_file_paths = [
     dir: "海藻",
     files: [
       {
+        path: "海藻/000_化痰药_海藻.jpg",
+        type: [1],
+      },
+      {
         path: "海藻/010_海蒿子.jpg",
         type: [1],
       },
@@ -12628,6 +13017,10 @@ const source_file_paths = [
   {
     dir: "海蛤",
     files: [
+      {
+        path: "海蛤/000_化痰药_海蛤壳.jpg",
+        type: [1],
+      },
       {
         path: "海蛤/010_倪注神农本草经.jpg",
         type: [1],
@@ -12895,6 +13288,10 @@ const source_file_paths = [
     dir: "淡竹叶",
     files: [
       {
+        path: "淡竹叶/000_清热药_淡竹叶.jpg",
+        type: [1],
+      },
+      {
         path: "淡竹叶/010_淡竹叶.jpg",
         type: [1],
       },
@@ -13000,6 +13397,10 @@ const source_file_paths = [
   {
     dir: "淫羊藿",
     files: [
+      {
+        path: "淫羊藿/000_补虚药_淫羊藿.jpg",
+        type: [1],
+      },
       {
         path: "淫羊藿/010_淫羊藿.jpg",
         type: [1],
@@ -13331,6 +13732,10 @@ const source_file_paths = [
     dir: "滑石",
     files: [
       {
+        path: "滑石/000_利水渗湿药_滑石.jpg",
+        type: [1],
+      },
+      {
         path: "滑石/010_滑石.jpg",
         type: [1],
       },
@@ -13501,6 +13906,10 @@ const source_file_paths = [
   {
     dir: "火麻仁",
     files: [
+      {
+        path: "火麻仁/000_泻下药_火麻仁.jpg",
+        type: [1],
+      },
       {
         path: "火麻仁/010_大麻植物.jpg",
         type: [1],
@@ -13794,6 +14203,18 @@ const source_file_paths = [
     dir: "牛膝",
     files: [
       {
+        path: "牛膝/000_活血药_川牛膝饮片.jpg",
+        type: [1],
+      },
+      {
+        path: "牛膝/000_活血药_怀牛膝.jpg",
+        type: [1],
+      },
+      {
+        path: "牛膝/000_活血药_牛膝.jpg",
+        type: [1],
+      },
+      {
         path: "牛膝/010_牛膝植物.jpg",
         type: [1],
       },
@@ -13909,6 +14330,10 @@ const source_file_paths = [
     dir: "牛黄",
     files: [
       {
+        path: "牛黄/000_熄风止痉药_牛黄.jpg",
+        type: [1],
+      },
+      {
         path: "牛黄/010_牛.jpg",
         type: [1],
       },
@@ -13977,6 +14402,14 @@ const source_file_paths = [
   {
     dir: "牡丹皮",
     files: [
+      {
+        path: "牡丹皮/000_清热药_牡丹皮.jpg",
+        type: [1],
+      },
+      {
+        path: "牡丹皮/000_清热药_牡丹皮2.jpg",
+        type: [1],
+      },
       {
         path: "牡丹皮/010_牡丹植物.jpg",
         type: [1],
@@ -14057,6 +14490,10 @@ const source_file_paths = [
     dir: "牡蛎",
     files: [
       {
+        path: "牡蛎/000_平肝潜阳_牡蛎.jpg",
+        type: [1],
+      },
+      {
         path: "牡蛎/010_长牡蛎.jpg",
         type: [1],
       },
@@ -14136,6 +14573,14 @@ const source_file_paths = [
     dir: "狗脊",
     files: [
       {
+        path: "狗脊/000_祛风湿药_狗脊.jpg",
+        type: [1],
+      },
+      {
+        path: "狗脊/000_祛风湿药_狗脊2.jpg",
+        type: [1],
+      },
+      {
         path: "狗脊/010_金毛狗脊植物.jpg",
         type: [1],
       },
@@ -14200,6 +14645,10 @@ const source_file_paths = [
   {
     dir: "独活",
     files: [
+      {
+        path: "独活/000_祛风湿药_独活.jpg",
+        type: [1],
+      },
       {
         path: "独活/010_重齿毛当归.jpg",
         type: [1],
@@ -14419,6 +14868,10 @@ const source_file_paths = [
     dir: "猪苓",
     files: [
       {
+        path: "猪苓/000_利水渗湿药_猪苓.jpg",
+        type: [1],
+      },
+      {
         path: "猪苓/010_真菌猪苓.jpg",
         type: [1],
       },
@@ -14513,6 +14966,14 @@ const source_file_paths = [
     dir: "玄参",
     files: [
       {
+        path: "玄参/000_清热药_玄参.jpg",
+        type: [1],
+      },
+      {
+        path: "玄参/000_清热药_玄参2.jpg",
+        type: [1],
+      },
+      {
         path: "玄参/010_玄参植物.jpg",
         type: [1],
       },
@@ -14579,6 +15040,10 @@ const source_file_paths = [
   {
     dir: "玉竹",
     files: [
+      {
+        path: "玉竹/000_补虚药_玉竹.jpg",
+        type: [1],
+      },
       {
         path: "玉竹/010_玉竹植物.jpg",
         type: [1],
@@ -15029,6 +15494,10 @@ const source_file_paths = [
     dir: "瓜蒂",
     files: [
       {
+        path: "瓜蒂/000_涌吐药_瓜蒂.jpg",
+        type: [1],
+      },
+      {
         path: "瓜蒂/010_倪注神农本草经.jpg",
         type: [1],
       },
@@ -15037,6 +15506,10 @@ const source_file_paths = [
   {
     dir: "瓜蒌",
     files: [
+      {
+        path: "瓜蒌/000_化痰药_瓜蒌.jpg",
+        type: [1],
+      },
       {
         path: "瓜蒌/010_栝楼植物.jpg",
         type: [1],
@@ -15246,6 +15719,10 @@ const source_file_paths = [
     dir: "甘草",
     files: [
       {
+        path: "甘草/000_补虚药_甘草.jpg",
+        type: [1],
+      },
+      {
         path: "甘草/010_甘草植物.jpg",
         type: [1],
       },
@@ -15298,6 +15775,10 @@ const source_file_paths = [
   {
     dir: "甘遂",
     files: [
+      {
+        path: "甘遂/000_泻下药_甘遂.jpg",
+        type: [1],
+      },
       {
         path: "甘遂/010_甘遂植物.jpg",
         type: [1],
@@ -15409,6 +15890,14 @@ const source_file_paths = [
   {
     dir: "生姜",
     files: [
+      {
+        path: "生姜/000_止血药_炮姜.jpg",
+        type: [1],
+      },
+      {
+        path: "生姜/000_温里药_干姜.jpg",
+        type: [1],
+      },
       {
         path: "生姜/010_姜植物.jpg",
         type: [1],
@@ -15542,6 +16031,14 @@ const source_file_paths = [
     dir: "白前",
     files: [
       {
+        path: "白前/000_化痰药_白前.jpg",
+        type: [1],
+      },
+      {
+        path: "白前/000_化痰药_白前2.jpg",
+        type: [1],
+      },
+      {
         path: "白前/010_柳叶白前植物.jpg",
         type: [1],
       },
@@ -15606,6 +16103,14 @@ const source_file_paths = [
   {
     dir: "白及",
     files: [
+      {
+        path: "白及/000_止血药_白芨.jpg",
+        type: [1],
+      },
+      {
+        path: "白及/000_止血药_白芨2.jpg",
+        type: [1],
+      },
       {
         path: "白及/010_白及植物.jpg",
         type: [1],
@@ -15688,6 +16193,14 @@ const source_file_paths = [
   {
     dir: "白头翁",
     files: [
+      {
+        path: "白头翁/000_清热药_白头翁.jpg",
+        type: [1],
+      },
+      {
+        path: "白头翁/000_清热药_白头翁2.jpg",
+        type: [1],
+      },
       {
         path: "白头翁/010_白头翁植物.jpg",
         type: [1],
@@ -15885,6 +16398,10 @@ const source_file_paths = [
     dir: "白术",
     files: [
       {
+        path: "白术/000_补虚药_白术.jpg",
+        type: [1],
+      },
+      {
         path: "白术/010_白术植物.jpg",
         type: [1],
       },
@@ -15977,6 +16494,10 @@ const source_file_paths = [
     dir: "白矾",
     files: [
       {
+        path: "白矾/000_功毒杀虫_白矾.jpg",
+        type: [1],
+      },
+      {
         path: "白矾/010_明矾石.jpg",
         type: [1],
       },
@@ -16013,6 +16534,18 @@ const source_file_paths = [
   {
     dir: "白芍",
     files: [
+      {
+        path: "白芍/000_清热药_赤芍.jpg",
+        type: [1],
+      },
+      {
+        path: "白芍/000_清热药_赤芍2.jpg",
+        type: [1],
+      },
+      {
+        path: "白芍/000_补虚药_白芍.jpg",
+        type: [1],
+      },
       {
         path: "白芍/010_白芍植物.jpg",
         type: [1],
@@ -16225,6 +16758,10 @@ const source_file_paths = [
   {
     dir: "白茅根",
     files: [
+      {
+        path: "白茅根/000_止血药_白茅根.jpg",
+        type: [1],
+      },
       {
         path: "白茅根/010_白茅植物.jpg",
         type: [1],
@@ -16456,6 +16993,14 @@ const source_file_paths = [
     dir: "白颈蚯蚓",
     files: [
       {
+        path: "白颈蚯蚓/000_熄风止痉药_地龙.jpg",
+        type: [1],
+      },
+      {
+        path: "白颈蚯蚓/000_熄风止痉药_地龙2.jpg",
+        type: [1],
+      },
+      {
         path: "白颈蚯蚓/010_倪注神农本草经.jpg",
         type: [1],
       },
@@ -16535,6 +17080,10 @@ const source_file_paths = [
     dir: "白鲜皮",
     files: [
       {
+        path: "白鲜皮/000_清热药_白鲜皮.jpg",
+        type: [1],
+      },
+      {
         path: "白鲜皮/010_白鲜植物.jpg",
         type: [1],
       },
@@ -16571,6 +17120,10 @@ const source_file_paths = [
   {
     dir: "百合",
     files: [
+      {
+        path: "百合/000_补虚药_百合.jpg",
+        type: [1],
+      },
       {
         path: "百合/010_卷丹植物.jpg",
         type: [1],
@@ -16694,6 +17247,10 @@ const source_file_paths = [
     dir: "皂荚",
     files: [
       {
+        path: "皂荚/000_化痰药_皂角.jpg",
+        type: [1],
+      },
+      {
         path: "皂荚/010_倪注神农本草经.jpg",
         type: [1],
       },
@@ -16781,6 +17338,10 @@ const source_file_paths = [
     dir: "益母草",
     files: [
       {
+        path: "益母草/000_活血药_益母草.jpg",
+        type: [1],
+      },
+      {
         path: "益母草/010_益母草植物.jpg",
         type: [1],
       },
@@ -16855,6 +17416,10 @@ const source_file_paths = [
     dir: "瞿麦",
     files: [
       {
+        path: "瞿麦/000_利水渗湿药_瞿麦.jpg",
+        type: [1],
+      },
+      {
         path: "瞿麦/010_瞿麦植物.jpg",
         type: [1],
       },
@@ -16899,6 +17464,10 @@ const source_file_paths = [
   {
     dir: "知母",
     files: [
+      {
+        path: "知母/000_清热药_知母.jpg",
+        type: [1],
+      },
       {
         path: "知母/010_知母植物.jpg",
         type: [1],
@@ -17129,6 +17698,10 @@ const source_file_paths = [
     dir: "石斛",
     files: [
       {
+        path: "石斛/000_补虚药_石斛.jpg",
+        type: [1],
+      },
+      {
         path: "石斛/010_金钗石斛植物.jpg",
         type: [1],
       },
@@ -17312,6 +17885,10 @@ const source_file_paths = [
     dir: "石膏",
     files: [
       {
+        path: "石膏/000_清热药_石膏.jpg",
+        type: [1],
+      },
+      {
         path: "石膏/010_石膏矿石.jpg",
         type: [1],
       },
@@ -17382,6 +17959,14 @@ const source_file_paths = [
   {
     dir: "石菖蒲",
     files: [
+      {
+        path: "石菖蒲/000_开窍药_石菖蒲.jpg",
+        type: [1],
+      },
+      {
+        path: "石菖蒲/000_开窍药_石菖蒲2.jpg",
+        type: [1],
+      },
       {
         path: "石菖蒲/010_石菖蒲.jpg",
         type: [1],
@@ -17688,6 +18273,10 @@ const source_file_paths = [
     dir: "硫黄",
     files: [
       {
+        path: "硫黄/000_功毒杀虫_硫磺.jpg",
+        type: [1],
+      },
+      {
         path: "硫黄/010_自然硫矿石.jpg",
         type: [1],
       },
@@ -17716,6 +18305,10 @@ const source_file_paths = [
   {
     dir: "磁石",
     files: [
+      {
+        path: "磁石/000_安神药_磁石.jpg",
+        type: [1],
+      },
       {
         path: "磁石/010_磁铁矿.jpg",
         type: [1],
@@ -17776,6 +18369,10 @@ const source_file_paths = [
     dir: "神曲",
     files: [
       {
+        path: "神曲/000_消食药_神曲.jpg",
+        type: [1],
+      },
+      {
         path: "神曲/010_倪注神农本草经.jpg",
         type: [1],
       },
@@ -17835,6 +18432,14 @@ const source_file_paths = [
     dir: "秦皮",
     files: [
       {
+        path: "秦皮/000_清热药_秦皮.jpg",
+        type: [1],
+      },
+      {
+        path: "秦皮/000_清热药_秦皮2.jpg",
+        type: [1],
+      },
+      {
         path: "秦皮/010_白蜡树植物.jpg",
         type: [1],
       },
@@ -17891,6 +18496,10 @@ const source_file_paths = [
   {
     dir: "秦艽",
     files: [
+      {
+        path: "秦艽/000_祛风湿药_秦艽.jpg",
+        type: [1],
+      },
       {
         path: "秦艽/010_秦艽植物.jpg",
         type: [1],
@@ -18382,6 +18991,10 @@ const source_file_paths = [
   {
     dir: "粉、绵萆薢",
     files: [
+      {
+        path: "粉、绵萆薢/000_利水渗湿药_萆薢.jpg",
+        type: [1],
+      },
       {
         path: "粉、绵萆薢/010_粉背薯蓣植物.jpg",
         type: [1],
@@ -18922,6 +19535,10 @@ const source_file_paths = [
     dir: "紫草",
     files: [
       {
+        path: "紫草/000_清热药_紫草.jpg",
+        type: [1],
+      },
+      {
         path: "紫草/010_新疆紫草植物.jpg",
         type: [1],
       },
@@ -19079,6 +19696,18 @@ const source_file_paths = [
   {
     dir: "紫萁贯众",
     files: [
+      {
+        path: "紫萁贯众/000_清热药_贯众.jpg",
+        type: [1],
+      },
+      {
+        path: "紫萁贯众/000_清热药_贯众2.jpg",
+        type: [1],
+      },
+      {
+        path: "紫萁贯众/000_清热药_贯众3.jpg",
+        type: [1],
+      },
       {
         path: "紫萁贯众/010_紫萁植物.jpg",
         type: [1],
@@ -19262,6 +19891,14 @@ const source_file_paths = [
   {
     dir: "红大戟",
     files: [
+      {
+        path: "红大戟/000_泻下药_京大戟.jpg",
+        type: [1],
+      },
+      {
+        path: "红大戟/000_泻下药_京大戟2.jpg",
+        type: [1],
+      },
       {
         path: "红大戟/010_红大戟植物.jpg",
         type: [1],
@@ -19535,6 +20172,10 @@ const source_file_paths = [
   {
     dir: "红花",
     files: [
+      {
+        path: "红花/000_活血药_红花.jpg",
+        type: [1],
+      },
       {
         path: "红花/010_红花植物.jpg",
         type: [1],
@@ -19861,6 +20502,10 @@ const source_file_paths = [
     dir: "络石藤",
     files: [
       {
+        path: "络石藤/000_祛风湿药_络石藤.jpg",
+        type: [1],
+      },
+      {
         path: "络石藤/010_络石植物.jpg",
         type: [1],
       },
@@ -19959,6 +20604,10 @@ const source_file_paths = [
     dir: "续断",
     files: [
       {
+        path: "续断/000_补虚药_续断.jpg",
+        type: [1],
+      },
+      {
         path: "续断/010_川续断植物.jpg",
         type: [1],
       },
@@ -20019,6 +20668,18 @@ const source_file_paths = [
   {
     dir: "绵马贯众",
     files: [
+      {
+        path: "绵马贯众/000_清热药_贯众.jpg",
+        type: [1],
+      },
+      {
+        path: "绵马贯众/000_清热药_贯众2.jpg",
+        type: [1],
+      },
+      {
+        path: "绵马贯众/000_清热药_贯众3.jpg",
+        type: [1],
+      },
       {
         path: "绵马贯众/010_粗茎鳞毛蕨.jpg",
         type: [1],
@@ -20361,6 +21022,10 @@ const source_file_paths = [
     dir: "羚羊角",
     files: [
       {
+        path: "羚羊角/000_熄风止痉药_羚羊角.jpg",
+        type: [1],
+      },
+      {
         path: "羚羊角/010_赛加羚羊.jpg",
         type: [1],
       },
@@ -20600,6 +21265,14 @@ const source_file_paths = [
     dir: "肉桂",
     files: [
       {
+        path: "肉桂/000_温里药_肉桂.jpg",
+        type: [1],
+      },
+      {
+        path: "肉桂/000_温里药_肉桂2.jpg",
+        type: [1],
+      },
+      {
         path: "肉桂/010_肉桂植物.jpg",
         type: [1],
       },
@@ -20640,6 +21313,10 @@ const source_file_paths = [
   {
     dir: "肉苁蓉",
     files: [
+      {
+        path: "肉苁蓉/000_补虚药_肉苁蓉.jpg",
+        type: [1],
+      },
       {
         path: "肉苁蓉/010_肉苁蓉植物.jpg",
         type: [1],
@@ -20816,6 +21493,10 @@ const source_file_paths = [
   {
     dir: "胆矾",
     files: [
+      {
+        path: "胆矾/000_涌吐药_胆矾.jpg",
+        type: [1],
+      },
       {
         path: "胆矾/010_倪注神农本草经.jpg",
         type: [1],
@@ -21022,6 +21703,10 @@ const source_file_paths = [
     dir: "艾叶",
     files: [
       {
+        path: "艾叶/000_止血药_艾叶.jpg",
+        type: [1],
+      },
+      {
         path: "艾叶/010_艾植物.jpg",
         type: [1],
       },
@@ -21079,6 +21764,10 @@ const source_file_paths = [
     dir: "芒硝",
     files: [
       {
+        path: "芒硝/000_泻下药_芒硝.jpg",
+        type: [1],
+      },
+      {
         path: "芒硝/010_芒硝矿石.jpg",
         type: [1],
       },
@@ -21128,6 +21817,10 @@ const source_file_paths = [
   {
     dir: "芡实",
     files: [
+      {
+        path: "芡实/000_收涩药_芡实.jpg",
+        type: [1],
+      },
       {
         path: "芡实/010_芡植物.jpg",
         type: [1],
@@ -21289,6 +21982,10 @@ const source_file_paths = [
     dir: "芫花",
     files: [
       {
+        path: "芫花/000_泻下药_芫花.jpg",
+        type: [1],
+      },
+      {
         path: "芫花/010_芫花植物.jpg",
         type: [1],
       },
@@ -21317,6 +22014,10 @@ const source_file_paths = [
   {
     dir: "花椒",
     files: [
+      {
+        path: "花椒/000_温里药_花椒.jpg",
+        type: [1],
+      },
       {
         path: "花椒/010_青椒植物.jpg",
         type: [1],
@@ -21660,6 +22361,10 @@ const source_file_paths = [
     dir: "苦参",
     files: [
       {
+        path: "苦参/000_清热药_苦参.jpg",
+        type: [1],
+      },
+      {
         path: "苦参/010_苦参植物.jpg",
         type: [1],
       },
@@ -21778,6 +22483,10 @@ const source_file_paths = [
   {
     dir: "苦杏仁",
     files: [
+      {
+        path: "苦杏仁/000_止咳药_苦杏仁.jpg",
+        type: [1],
+      },
       {
         path: "苦杏仁/010_山杏植物.jpg",
         type: [1],
@@ -21916,6 +22625,10 @@ const source_file_paths = [
     dir: "茜草",
     files: [
       {
+        path: "茜草/000_止血药_茜草.jpg",
+        type: [1],
+      },
+      {
         path: "茜草/010_茜草植物.jpg",
         type: [1],
       },
@@ -22001,6 +22714,10 @@ const source_file_paths = [
     dir: "茯苓",
     files: [
       {
+        path: "茯苓/000_利水渗湿药_茯苓.jpg",
+        type: [1],
+      },
+      {
         path: "茯苓/010_真菌茯苓.jpg",
         type: [1],
       },
@@ -22079,6 +22796,10 @@ const source_file_paths = [
   {
     dir: "茵陈",
     files: [
+      {
+        path: "茵陈/000_利水渗湿药_茵陈蒿.jpg",
+        type: [1],
+      },
       {
         path: "茵陈/010_滨蒿.jpg",
         type: [1],
@@ -22659,6 +23380,10 @@ const source_file_paths = [
     dir: "莲子",
     files: [
       {
+        path: "莲子/000_收涩药_莲子.jpg",
+        type: [1],
+      },
+      {
         path: "莲子/010_莲子植物.jpg",
         type: [1],
       },
@@ -22799,6 +23524,10 @@ const source_file_paths = [
   {
     dir: "菊花",
     files: [
+      {
+        path: "菊花/000_清热药_野菊花.jpg",
+        type: [1],
+      },
       {
         path: "菊花/010_菊植物.jpg",
         type: [1],
@@ -22958,6 +23687,10 @@ const source_file_paths = [
   {
     dir: "菟丝子",
     files: [
+      {
+        path: "菟丝子/000_补虚药_菟丝子.jpg",
+        type: [1],
+      },
       {
         path: "菟丝子/010_南方菟丝子.jpg",
         type: [1],
@@ -23321,6 +24054,10 @@ const source_file_paths = [
     dir: "葶苈子",
     files: [
       {
+        path: "葶苈子/000_止咳药_葶苈子.jpg",
+        type: [1],
+      },
+      {
         path: "葶苈子/010_播娘蒿植物.jpg",
         type: [1],
       },
@@ -23435,6 +24172,10 @@ const source_file_paths = [
     dir: "蒲黄",
     files: [
       {
+        path: "蒲黄/000_止血药_蒲黄.jpg",
+        type: [1],
+      },
+      {
         path: "蒲黄/010_水烛香蒲植物.jpg",
         type: [1],
       },
@@ -23484,6 +24225,10 @@ const source_file_paths = [
   {
     dir: "蒺藜",
     files: [
+      {
+        path: "蒺藜/000_平肝潜阳_刺蒺藜.jpg",
+        type: [1],
+      },
       {
         path: "蒺藜/010_蒺藜植物.jpg",
         type: [1],
@@ -23883,6 +24628,10 @@ const source_file_paths = [
     dir: "薏苡仁",
     files: [
       {
+        path: "薏苡仁/000_利水渗湿药_薏苡仁.jpg",
+        type: [1],
+      },
+      {
         path: "薏苡仁/010_薏米植物.jpg",
         type: [1],
       },
@@ -23923,6 +24672,10 @@ const source_file_paths = [
   {
     dir: "薤白",
     files: [
+      {
+        path: "薤白/000_行气药_薤白.jpg",
+        type: [1],
+      },
       {
         path: "薤白/010_小根蒜植物.jpg",
         type: [1],
@@ -24375,6 +25128,10 @@ const source_file_paths = [
     dir: "蛇床子",
     files: [
       {
+        path: "蛇床子/000_功毒杀虫_蛇床子.jpg",
+        type: [1],
+      },
+      {
         path: "蛇床子/010_蛇床植物.jpg",
         type: [1],
       },
@@ -24623,6 +25380,10 @@ const source_file_paths = [
     dir: "蜂房",
     files: [
       {
+        path: "蜂房/000_功毒杀虫_蜂房.jpg",
+        type: [1],
+      },
+      {
         path: "蜂房/010_果马蜂.jpg",
         type: [1],
       },
@@ -24709,6 +25470,10 @@ const source_file_paths = [
     dir: "蜂蜜",
     files: [
       {
+        path: "蜂蜜/000_补虚药_蜂蜜.jpg",
+        type: [1],
+      },
+      {
         path: "蜂蜜/010_中华蜜蜂昆虫.jpg",
         type: [1],
       },
@@ -24766,6 +25531,10 @@ const source_file_paths = [
   {
     dir: "蜈蚣",
     files: [
+      {
+        path: "蜈蚣/000_熄风止痉药_蜈蚣.jpg",
+        type: [1],
+      },
       {
         path: "蜈蚣/010_少棘巨蜈蚣.jpg",
         type: [1],
@@ -25048,6 +25817,10 @@ const source_file_paths = [
   {
     dir: "血余炭",
     files: [
+      {
+        path: "血余炭/000_止血药_血余炭.jpg",
+        type: [1],
+      },
       {
         path: "血余炭/010_人发.jpg",
         type: [1],
@@ -25360,6 +26133,10 @@ const source_file_paths = [
     dir: "覆盆子",
     files: [
       {
+        path: "覆盆子/000_收涩药_覆盆子.jpg",
+        type: [1],
+      },
+      {
         path: "覆盆子/010_华东覆盆子植物.jpg",
         type: [1],
       },
@@ -25412,6 +26189,10 @@ const source_file_paths = [
   {
     dir: "诃子",
     files: [
+      {
+        path: "诃子/000_收涩药_诃子.jpg",
+        type: [1],
+      },
       {
         path: "诃子/010_诃子植物.jpg",
         type: [1],
@@ -25660,6 +26441,10 @@ const source_file_paths = [
     dir: "败酱草",
     files: [
       {
+        path: "败酱草/000_清热药_败酱草.jpg",
+        type: [1],
+      },
+      {
         path: "败酱草/010_黄花败酱.jpg",
         type: [1],
       },
@@ -25812,6 +26597,10 @@ const source_file_paths = [
     dir: "赤石脂",
     files: [
       {
+        path: "赤石脂/000_收涩药_赤石脂.jpg",
+        type: [1],
+      },
+      {
         path: "赤石脂/010_多水高岭石.jpg",
         type: [1],
       },
@@ -25844,6 +26633,18 @@ const source_file_paths = [
   {
     dir: "赤芍",
     files: [
+      {
+        path: "赤芍/000_清热药_赤芍.jpg",
+        type: [1],
+      },
+      {
+        path: "赤芍/000_清热药_赤芍2.jpg",
+        type: [1],
+      },
+      {
+        path: "赤芍/000_补虚药_白芍.jpg",
+        type: [1],
+      },
       {
         path: "赤芍/010_芍药植物.jpg",
         type: [1],
@@ -25906,6 +26707,14 @@ const source_file_paths = [
     dir: "赭石",
     files: [
       {
+        path: "赭石/000_平肝潜阳_代赭石.jpg",
+        type: [1],
+      },
+      {
+        path: "赭石/000_平肝潜阳_代赭石2.jpg",
+        type: [1],
+      },
+      {
         path: "赭石/010_赤铁矿.jpg",
         type: [1],
       },
@@ -25959,6 +26768,10 @@ const source_file_paths = [
   {
     dir: "车前子",
     files: [
+      {
+        path: "车前子/000_利水渗湿药_车前子.jpg",
+        type: [1],
+      },
       {
         path: "车前子/010_车前植物.jpg",
         type: [1],
@@ -26161,6 +26974,10 @@ const source_file_paths = [
     dir: "远志",
     files: [
       {
+        path: "远志/000_安神药_远志.jpg",
+        type: [1],
+      },
+      {
         path: "远志/010_远志植物.jpg",
         type: [1],
       },
@@ -26213,6 +27030,10 @@ const source_file_paths = [
   {
     dir: "连翘",
     files: [
+      {
+        path: "连翘/000_清热药_连翘.jpg",
+        type: [1],
+      },
       {
         path: "连翘/010_连翘植物.jpg",
         type: [1],
@@ -26427,6 +27248,10 @@ const source_file_paths = [
     dir: "郁李仁",
     files: [
       {
+        path: "郁李仁/000_泻下药_郁李仁.jpg",
+        type: [1],
+      },
+      {
         path: "郁李仁/010_欧李植物.jpg",
         type: [1],
       },
@@ -26568,6 +27393,10 @@ const source_file_paths = [
   {
     dir: "酸枣仁",
     files: [
+      {
+        path: "酸枣仁/000_安神药_酸枣仁.jpg",
+        type: [1],
+      },
       {
         path: "酸枣仁/010_酸枣植物.jpg",
         type: [1],
@@ -26719,6 +27548,10 @@ const source_file_paths = [
   {
     dir: "野菊花",
     files: [
+      {
+        path: "野菊花/000_清热药_野菊花.jpg",
+        type: [1],
+      },
       {
         path: "野菊花/010_野菊植物.jpg",
         type: [1],
@@ -27480,6 +28313,10 @@ const source_file_paths = [
     dir: "铅丹",
     files: [
       {
+        path: "铅丹/000_功毒杀虫_铅丹.jpg",
+        type: [1],
+      },
+      {
         path: "铅丹/010_倪注神农本草经.jpg",
         type: [1],
       },
@@ -27702,6 +28539,14 @@ const source_file_paths = [
   {
     dir: "防己",
     files: [
+      {
+        path: "防己/000_祛风湿药_防己.jpg",
+        type: [1],
+      },
+      {
+        path: "防己/000_祛风湿药_防己2.jpg",
+        type: [1],
+      },
       {
         path: "防己/010_粉防己植物.jpg",
         type: [1],
@@ -27939,6 +28784,10 @@ const source_file_paths = [
     dir: "阿胶",
     files: [
       {
+        path: "阿胶/000_补虚药_阿胶.jpg",
+        type: [1],
+      },
+      {
         path: "阿胶/010_驴动物.jpg",
         type: [1],
       },
@@ -28032,6 +28881,10 @@ const source_file_paths = [
   {
     dir: "附子",
     files: [
+      {
+        path: "附子/000_温里药_附子.jpg",
+        type: [1],
+      },
       {
         path: "附子/010_乌头植物.jpg",
         type: [1],
@@ -28301,6 +29154,10 @@ const source_file_paths = [
   {
     dir: "雄黄",
     files: [
+      {
+        path: "雄黄/000_功毒杀虫_雄黄.jpg",
+        type: [1],
+      },
       {
         path: "雄黄/010_雄黄矿石.jpg",
         type: [1],
@@ -28673,6 +29530,10 @@ const source_file_paths = [
     dir: "青蒿",
     files: [
       {
+        path: "青蒿/000_清热药_青蒿.jpg",
+        type: [1],
+      },
+      {
         path: "青蒿/010_黄花蒿.jpg",
         type: [1],
       },
@@ -28750,6 +29611,10 @@ const source_file_paths = [
   {
     dir: "青黛",
     files: [
+      {
+        path: "青黛/000_清热药_青黛.jpg",
+        type: [1],
+      },
       {
         path: "青黛/010_马蓝植物.jpg",
         type: [1],
@@ -29652,6 +30517,14 @@ const source_file_paths = [
     dir: "鳖甲",
     files: [
       {
+        path: "鳖甲/000_补虚药_鳖甲.jpg",
+        type: [1],
+      },
+      {
+        path: "鳖甲/000_补虚药_鳖甲2.jpg",
+        type: [1],
+      },
+      {
         path: "鳖甲/010_鳖.jpg",
         type: [1],
       },
@@ -29712,6 +30585,10 @@ const source_file_paths = [
   {
     dir: "鸡内金",
     files: [
+      {
+        path: "鸡内金/000_消食药_鸡内金.jpg",
+        type: [1],
+      },
       {
         path: "鸡内金/010_家鸡.jpg",
         type: [1],
@@ -30130,6 +31007,10 @@ const source_file_paths = [
     dir: "鹿茸",
     files: [
       {
+        path: "鹿茸/000_补虚药_鹿茸.jpg",
+        type: [1],
+      },
+      {
         path: "鹿茸/010_梅花鹿.jpg",
         type: [1],
       },
@@ -30369,6 +31250,10 @@ const source_file_paths = [
     dir: "麝香",
     files: [
       {
+        path: "麝香/000_开窍药_麝香.jpg",
+        type: [1],
+      },
+      {
         path: "麝香/010_林麝.jpg",
         type: [1],
       },
@@ -30425,6 +31310,10 @@ const source_file_paths = [
   {
     dir: "麦冬",
     files: [
+      {
+        path: "麦冬/000_补虚药_麦冬.jpg",
+        type: [1],
+      },
       {
         path: "麦冬/010_麦冬植物.jpg",
         type: [1],
@@ -30531,6 +31420,10 @@ const source_file_paths = [
   {
     dir: "麻黄",
     files: [
+      {
+        path: "麻黄/000_收涩药_麻黄根.jpg",
+        type: [1],
+      },
       {
         path: "麻黄/010_草麻黄植物.jpg",
         type: [1],
@@ -30653,6 +31546,14 @@ const source_file_paths = [
   {
     dir: "黄柏",
     files: [
+      {
+        path: "黄柏/000_清热药_黄柏.jpg",
+        type: [1],
+      },
+      {
+        path: "黄柏/000_清热药_黄柏2.jpg",
+        type: [1],
+      },
       {
         path: "黄柏/010_黄皮树植物.jpg",
         type: [1],
@@ -30813,6 +31714,14 @@ const source_file_paths = [
     dir: "黄芩",
     files: [
       {
+        path: "黄芩/000_清热药_黄芩.jpg",
+        type: [1],
+      },
+      {
+        path: "黄芩/000_清热药_黄芩2.jpg",
+        type: [1],
+      },
+      {
         path: "黄芩/010_黄芩植物.jpg",
         type: [1],
       },
@@ -30861,6 +31770,14 @@ const source_file_paths = [
   {
     dir: "黄芪",
     files: [
+      {
+        path: "黄芪/000_补虚药_黄芪.jpg",
+        type: [1],
+      },
+      {
+        path: "黄芪/000_补虚药_黄芪切片.jpg",
+        type: [1],
+      },
       {
         path: "黄芪/010_蒙古黄芪.jpg",
         type: [1],
@@ -31025,6 +31942,10 @@ const source_file_paths = [
   {
     dir: "黄连",
     files: [
+      {
+        path: "黄连/000_清热药_黄连.jpg",
+        type: [1],
+      },
       {
         path: "黄连/010_黄连植物.jpg",
         type: [1],
@@ -31415,6 +32336,10 @@ const source_file_paths = [
     dir: "龙骨",
     files: [
       {
+        path: "龙骨/000_安神药_龙骨.jpg",
+        type: [1],
+      },
+      {
         path: "龙骨/010_龙骨.jpg",
         type: [1],
       },
@@ -31548,6 +32473,14 @@ const source_file_paths = [
   {
     dir: "龟甲",
     files: [
+      {
+        path: "龟甲/000_补虚药_龟甲.jpg",
+        type: [1],
+      },
+      {
+        path: "龟甲/000_补虚药_龟甲2.jpg",
+        type: [1],
+      },
       {
         path: "龟甲/010_乌龟.jpg",
         type: [1],
