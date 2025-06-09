@@ -1191,7 +1191,7 @@ const nihaixia_slbcj_ym_ext = [
     books: [0],
   },
   {
-    name: ["败酱"],
+    name: ["败酱","败酱草"],
     books: [0],
   },
   {
@@ -1643,7 +1643,7 @@ const nihaixia_slbcj_ym_ext = [
     books: [0],
   },
   {
-    name: ["红大戟", "大戟", "应该是红大戟，而非京大戟"],
+    name: ["京大戟","红大戟", "大戟", "应该是京大戟"],
     books: [1],
   },
   {
@@ -1947,7 +1947,7 @@ const nihaixia_slbcj_ym_ext = [
     books: [0],
   },
   {
-    name: ["诃子", "诃黎勒（诃子）"],
+    name: ["诃子", "诃黎勒", "诃黎勒（诃子）"],
     books: [0],
   },
   {
