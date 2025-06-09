@@ -84,29 +84,48 @@
       }
 
       const gallery = document.getElementById("my-gallery");
+      // 预先创建占位元素
+      files.forEach((_, index) => {
+        const placeholder = document.createElement("div");
+        placeholder.className = "pswp-gallery__item";
+        placeholder.setAttribute("data-index", index);
+        gallery.appendChild(placeholder);
+      });
+
       const pageWidth = window.innerWidth;
 
-      files.forEach((path, index) => {
-        const whole_path = "figure/" + path;
-        const originalWidth = 0;
-        const originalHeight = 0;
-        const displayWidth = device.mobile()
-          ? pageWidth
-          : Math.min(originalWidth, pageWidth);
-        const displayHeight = (originalHeight / originalWidth) * displayWidth;
-        // 创建 DOM 元素
-        const gallery_item_div = document.createElement("div");
-        gallery_item_div.className = "pswp-gallery__item";
-        {
-          const link = document.createElement("a");
-          link.href = "javascript:void(0)";
-          link.setAttribute("data-pswp-src", whole_path);
-          link.setAttribute("data-pswp-width", displayWidth);
-          link.setAttribute("data-pswp-height", Math.round(displayHeight));
-          link.target = "_blank";
-          {
+      // 将每个图片加载包装成一个 Promise，并保留其在数组中的位置
+      const loadImagePromises = files.map((path, index) => {
+        return new Promise((resolve) => {
+          const whole_path = "figure/" + path;
+          const img = new Image();
+          img.src = whole_path;
+          console.log(`进入第${index}个Promise，图片路径为：${whole_path}`);
+          img.onload = () => {
+            const originalWidth = img.naturalWidth;
+            const originalHeight = img.naturalHeight;
+            const displayWidth = device.mobile()
+              ? pageWidth
+              : Math.min(originalWidth, pageWidth);
+            const displayHeight =
+              (originalHeight / originalWidth) * displayWidth;
+            console.log(
+              `进入第${index}个onload函数，图片路径为：${whole_path}`
+            );
+            // 通过 data-index 找到对应位置的占位元素
+            const gallery_item_div = document.querySelector(
+              `.pswp-gallery__item[data-index="${index}"]`
+            );
+
+            const link = document.createElement("a");
+            link.href = "javascript:void(0)";
+            link.setAttribute("data-pswp-src", whole_path);
+            link.setAttribute("data-pswp-width", displayWidth);
+            link.setAttribute("data-pswp-height", Math.round(displayHeight));
+            link.target = "_blank";
+
             const imageElement = document.createElement("img");
-            imageElement.src = whole_path;
+            imageElement.src = img.src;
             imageElement.alt = ym_arr.join("|");
             imageElement.width = displayWidth;
             imageElement.height = Math.round(displayHeight);
@@ -114,74 +133,30 @@
             imageElement.style.height = Math.round(displayHeight) + "px";
 
             link.appendChild(imageElement);
-          }
-          gallery_item_div.appendChild(link);
+            gallery_item_div.appendChild(link);
 
-          const captionDiv = document.createElement("div");
-          captionDiv.className = "pswp-caption-content";
-          captionDiv.textContent = path
-            .split("/")
-            .slice(1, 2)
-            .join("")
-            .split(".")[0];
-          gallery_item_div.appendChild(captionDiv);
-        }
-        gallery.appendChild(gallery_item_div);
+            const captionDiv = document.createElement("div");
+            captionDiv.className = "pswp-caption-content";
+            captionDiv.textContent = path
+              .split("/")
+              .slice(1, 2)
+              .join("")
+              .split(".")[0];
+            gallery_item_div.appendChild(captionDiv);
+
+            resolve({ index, element: gallery_item_div }); // 返回索引和元素
+          };
+
+          img.onerror = () => {
+            console.error("图片加载失败:", path);
+            resolve(null); // 失败也继续处理
+          };
+        });
       });
 
-      function waitForAllImages(callback) {
-        const images = document.querySelectorAll("img");
-        let loadedCount = 0;
-
-        function checkLoaded() {
-          loadedCount++;
-          if (loadedCount === images.length) {
-            callback(); // 所有图片加载完成后执行回调
-          }
-        }
-
-        images.forEach((img) => {
-          if (img.complete) {
-            // 图片已缓存，直接计数
-            loadedCount++;
-          } else {
-            // 监听加载完成或错误事件
-            img.addEventListener("load", checkLoaded);
-            img.addEventListener("error", checkLoaded); // 可选：处理加载失败
-          }
-        });
-
-        // 如果所有图片已加载（例如缓存命中），直接触发回调
-        if (loadedCount === images.length) {
-          callback();
-        }
-      }
-
-      // 使用示例
-      waitForAllImages(() => {
-        console.log("所有图片已加载完成，执行后续代码");
-        // 调整图片宽高
-        document.querySelectorAll(".pswp-gallery__item").forEach((item) => {
-          const img = item.querySelector("img");
-
-          const originalWidth = img.naturalWidth;
-          const originalHeight = img.naturalHeight;
-          // 移动端页面宽度为100%，非移动端页面宽度为80%
-          const displayWidth = device.mobile() ? pageWidth : pageWidth * 0.8;
-          // 保持图片的宽高比不变，根据宽度计算
-          const displayHeight = (originalHeight / originalWidth) * displayWidth;
-
-          // 处理img标签的属性
-          img.width = displayWidth;
-          img.height = Math.round(displayHeight);
-          img.style.width = displayWidth + "px";
-          img.style.height = Math.round(displayHeight) + "px";
-
-          // 处理a标签的属性
-          const a = item.querySelector("a");
-          a.setAttribute("data-pswp-width", displayWidth);
-          a.setAttribute("data-pswp-height", Math.round(displayHeight));
-        });
+      // 并发加载所有图片并按顺序插入 DOM
+      Promise.all(loadImagePromises).then((results) => {
+        console.log("所有图片加载完成");
 
         // 初始化 PhotoSwipe
         import(
@@ -198,11 +173,6 @@
             initialZoomLevel: "fit",
             secondaryZoomLevel: 1,
             maxZoomLevel: 10,
-            spacing: 0,
-            allowPanToNext: true,
-            wheelToZoom: true,
-            pinchToClose: true,
-            closeOnVerticalDrag: true,
           });
 
           import(
