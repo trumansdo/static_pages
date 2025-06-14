@@ -10,12 +10,18 @@
     />
     <!-- 引入样式 -->
     <link
-      href="https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe.min.css"
       rel="stylesheet"
+      href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe/5.4.4/photoswipe.min.css"
+      integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <link
-      href="https://cdn.bootcdn.net/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.min.css"
       rel="stylesheet"
+      href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.min.css"
+      integrity="sha512-x20LXbTUxAMuniBAuSyDGScWaoCxvZJ8m0tbJCRtpPkvPgsb2kStG9ZhDQKHj5mDWaKFOP7TadAZ4KVAyFJwNA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
   </head>
 
@@ -26,12 +32,22 @@
       itemscope
       itemtype="http://schema.org/ImageGallery"
     ></div>
-
+    <iframe title="nhs_snbcj_frame" id="nhs_snbcj_frame" src="#" frameborder="0" style="width: 100%; height: 80vh;"></iframe>
     <script src="data/ym_data.js"></script>
     <script src="data/url_data.js"></script>
     <script src="data/figure_data.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/device.js/0.2.7/device.js"></script>
-    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script> -->
+    <script
+      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/device.js/0.2.7/device.min.js"
+      integrity="sha512-BLaPLqY2LFOIcJJjGvv/1fojyBkhzuaKGhHWHFj7QOcpHelseTeUecnUBtTENdzr5ugPqNTaQKKtJh8jTg3dRQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/vConsole/3.15.1/vconsole.min.js"
+      integrity="sha512-45r3PcQfwT69iG1BwGOOZKjNKDIlT4fp8A/auHloAAajP0/HXFFGgtX2jHZVIfhjmaXcXVTRSlGu1OSajP7gzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script type="module">
       //   let vConsole = new window.VConsole();
       const queryString = new URLSearchParams(window.location.search);
@@ -40,7 +56,7 @@
       if (!queryString.has("ym_source")) {
         ym_source = "1";
       }
-      let ym_arr = [];
+      let ym_arr = {};
       if (ym_source == "1") {
         // 仅伤寒论药材
         ym_arr = random_only_nihaixia_shl_ym_ext();
@@ -59,7 +75,7 @@
         ym_arr = random_exclude_nihaixia_shl_ym_ext();
       } else {
         // 全部
-        ym_arr = [random_one_dir()];
+        ym_arr = { name: [random_one_dir()] };
       }
 
       let path_source = queryString.get("path_source");
@@ -71,18 +87,33 @@
       let files = [];
       if (path_source == "1") {
         // 全部分文件路径，包括伪品的
-        files = find_paths(ym_arr);
+        files = find_paths(ym_arr["name"]);
       } else {
         // 只包括正品的文件路径
-        files = find_genuine_paths(ym_arr);
+        files = find_genuine_paths(ym_arr["name"]);
       }
 
       // 以下是生成图片浏览画廊的
       if (files === undefined || files.length === 0) {
-        console.log("随机药名没有对应的图片文件: ", ym_arr);
+        console.log("随机药名没有对应的图片文件: ", ym_arr["name"]);
         location.reload();
       }
-
+      // ---------------------------------------------------------------------
+      // 调整iframe
+      const iframe = document.getElementById("nhs_snbcj_frame");
+      // 修改 iframe 的 src 并附加锚点
+      const snbcj_pos = ym_arr?.snbcj_pos ?? -1;
+      if (snbcj_pos != -1) {
+        if (1 <= snbcj_pos && snbcj_pos <= 142) {
+          iframe.src = `nhs_snbcj_sj.html#pos${snbcj_pos}`;
+        } else if (143 <= snbcj_pos && snbcj_pos <= 254) {
+          iframe.src = `nhs_snbcj_zj.html#pos${snbcj_pos}`;
+        } else if (255 <= snbcj_pos && snbcj_pos <= 385) {
+          iframe.src = `nhs_snbcj_xj.html#pos${snbcj_pos}`;
+        }
+      }
+      // ----------------------------------------------------------------------
+      // 创建画廊
       const gallery = document.getElementById("my-gallery");
       // 预先创建占位元素
       files.forEach((_, index) => {
@@ -128,7 +159,7 @@
             // 创建 img 标签
             const imageElement = document.createElement("img");
             imageElement.src = img.src;
-            imageElement.alt = ym_arr.join("|");
+            imageElement.alt = ym_arr["name"].join("|");
             imageElement.width = displayWidth;
             imageElement.height = Math.round(displayHeight);
             imageElement.style.width = displayWidth + "px";
@@ -171,7 +202,7 @@
 
         // 初始化 PhotoSwipe
         import(
-          "https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe-lightbox.esm.js "
+          "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe/5.4.4/photoswipe-lightbox.esm.min.js"
         ).then((module) => {
           const PhotoSwipeLightbox = module.default;
           const lightbox = new PhotoSwipeLightbox({
@@ -179,7 +210,7 @@
             childSelector: ".pswp-gallery__item",
             pswpModule: () =>
               import(
-                "https://cdn.bootcdn.net/ajax/libs/photoswipe/5.4.4/photoswipe.esm.js "
+                "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe/5.4.4/photoswipe.esm.min.js"
               ),
             initialZoomLevel: "fit",
             secondaryZoomLevel: 1,
@@ -187,7 +218,7 @@
           });
 
           import(
-            "https://cdn.bootcdn.net/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.esm.js "
+            "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.esm.min.js"
           ).then((pluginModule) => {
             const PhotoSwipeDynamicCaption = pluginModule.default;
             const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {

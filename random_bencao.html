@@ -37,7 +37,7 @@
             window.location.href + "?url_source=1&ym_source=1";
         }
 
-        let sourceYms = [];
+        let sourceYms = {};
         // 药名来源
         if (queryString.get("ym_source") == "1") {
           sourceYms = random_only_nihaixia_shl_ym_ext();
@@ -52,9 +52,9 @@
         let random_link = null;
         // 链接来源
         if (queryString.get("url_source") == "1") {
-          random_link = random_zh_yyys_urls(sourceYms);
+          random_link = random_zh_yyys_urls(sourceYms["name"]);
         } else {
-          random_link = random_xg_jhdx_urls(sourceYms);
+          random_link = random_xg_jhdx_urls(sourceYms["name"]);
         }
 
         if (random_link === undefined || random_link == null) {
