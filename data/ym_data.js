@@ -2852,7 +2852,7 @@ const nihaixia_slbcj_ym_ext = [
     idx: 409,
   },
   {
-    name: "猪胆",
+    name: ["猪胆"],
     books: [null],
     snbcj_pos: 378,
     idx: 410,
@@ -2907,36 +2907,81 @@ const nihaixia_slbcj_ym_ext = [
   },
 ];
 
+function weighted_random(options) {
+  let i;
+  let weights = [];
+  for (i = 0; i < options.length; i++) {
+    weights[i] = options[i].weight + (weights[i - 1] || 0);
+  }
+
+  let random = Math.random() * weights[weights.length - 1];
+  for (i = 0; i < weights.length; i++) {
+    if (weights[i] > random) {
+      break;
+    }
+  }
+
+  return options[i].item;
+}
+
+function normal_weight_random(options) {
+  return weighted_random(options.sort((a, b) => a.weight - b.weight));
+}
+
+function reverse_weight_random(options) {
+  return weighted_random(options.sort((a, b) => b.weight - a.weight));
+}
+
+function random_ym_by_weight(data) {
+  if (!localStorage.getItem("ym_weight_opt")) {
+    let ym_weight_opt = nihaixia_slbcj_ym_ext.map((x) => {
+      return { item: x.name.join("|"), weight: 1 };
+    });
+    localStorage.setItem("ym_weight_opt", JSON.stringify(ym_weight_opt));
+  }
+  let ym_weight_opt = JSON.parse(localStorage.getItem("ym_weight_opt"));
+  let filter_items = data.map((x) => x.name.join("|"));
+  let res = reverse_weight_random(
+    ym_weight_opt.filter((x) => filter_items.includes(x.item))
+  );
+  ym_weight_opt.forEach((x) => {
+    if (x.item == res) {
+      x.weight += 1;
+    }
+  });
+  console.log("权重随机到 ", res);
+  localStorage.setItem("ym_weight_opt", JSON.stringify(ym_weight_opt));
+  return data.find((x) => x.name.join("|") == res);
+}
+
 function random_exclude_nihaixia_shl_ym_ext() {
   arr = nihaixia_slbcj_ym_ext
     .filter((x) => !x["books"].includes(1))
     .map((x) => x);
-  return arr[Math.floor(Math.random() * arr.length)];
+  return random_ym_by_weight(arr);
 }
 
 function random_only_nihaixia_shl_ym_ext() {
   arr = nihaixia_slbcj_ym_ext
     .filter((x) => x["books"].includes(1))
     .map((x) => x);
-  return arr[Math.floor(Math.random() * arr.length)];
+  return random_ym_by_weight(arr);
 }
 
 function random_only_nihaixia_jk_ym_ext() {
   arr = nihaixia_slbcj_ym_ext
     .filter((x) => x["books"].includes(2))
     .map((x) => x);
-  return arr[Math.floor(Math.random() * arr.length)];
+  return random_ym_by_weight(arr);
 }
 
 function random_nihaixia_shl_and_jk_ym_ext() {
   arr = nihaixia_slbcj_ym_ext
     .filter((x) => x["books"].includes(1) || x["books"].includes(2))
     .map((x) => x);
-  return arr[Math.floor(Math.random() * arr.length)];
+  return random_ym_by_weight(arr);
 }
 
 function random_all_nihaixia_slbcj_ym_ext() {
-  return nihaixia_slbcj_ym_ext[
-    Math.floor(Math.random() * nihaixia_slbcj_ym_ext.length)
-  ];
+  return random_ym_by_weight(nihaixia_slbcj_ym_ext);
 }

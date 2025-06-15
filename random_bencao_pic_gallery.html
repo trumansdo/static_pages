@@ -186,7 +186,6 @@
             console.log(`第${index}个图片使用了缓存图片。`);
             handleImageLoad();
           } else {
-            console.log(`第${index}个图片没用缓存图片。`);
             img.addEventListener("load", handleImageLoad);
             img.addEventListener("error", () => {
               console.error("图片加载失败:", path);
