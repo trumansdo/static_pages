@@ -43,6 +43,18 @@
     <script src="data/url_data.js"></script>
     <script src="data/figure_data.js"></script>
     <script
+      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js"
+      integrity="sha512-hktawXAt9BdIaDoaO9DlLp6LYhbHMi5A36LcXQeHgVKUH6kJMOQsAtIw2kmQ9RERDpnSTlafajo6USh9JUXckw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
       src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/device.js/0.2.7/device.min.js"
       integrity="sha512-BLaPLqY2LFOIcJJjGvv/1fojyBkhzuaKGhHWHFj7QOcpHelseTeUecnUBtTENdzr5ugPqNTaQKKtJh8jTg3dRQ=="
       crossorigin="anonymous"
@@ -55,6 +67,7 @@
       referrerpolicy="no-referrer"
     ></script>
     <script type="module">
+      $.LoadingOverlay("show");
       window.scrollTo(0, 0);
       //   let vConsole = new window.VConsole();
       const queryString = new URLSearchParams(window.location.search);
@@ -240,6 +253,7 @@
         // Scroll to the top of the page after loading the
         window.scrollTo(0, 0);
         setTimeout(() => window.scrollTo(0, 0), 100);
+        $.LoadingOverlay("hide");
       });
     </script>
   </body>
