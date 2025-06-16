@@ -69,6 +69,7 @@
     <script type="module">
       $.LoadingOverlay("show");
       window.scrollTo(0, 0);
+      $("html, body").scrollTop(0);
       //   let vConsole = new window.VConsole();
       const queryString = new URLSearchParams(window.location.search);
 
@@ -252,7 +253,11 @@
         }
         // Scroll to the top of the page after loading the
         window.scrollTo(0, 0);
-        setTimeout(() => window.scrollTo(0, 0), 100);
+        $("html, body").scrollTop(0);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          $("html, body").scrollTop(0);
+        }, 100);
         $.LoadingOverlay("hide");
       });
     </script>
