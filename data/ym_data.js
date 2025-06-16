@@ -2907,21 +2907,33 @@ const nihaixia_slbcj_ym_ext = [
   },
 ];
 
+function shuffle(arr) {
+  let copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 function weighted_random(options) {
   let i;
-  let weights = [];
-  for (i = 0; i < options.length; i++) {
-    weights[i] = options[i].weight + (weights[i - 1] || 0);
+  let random_options = [...options];
+  for (i = 0; i < random_options.length; i++) {
+    random_options[i]["sum_weight"] =
+      random_options[i].weight + (random_options[i - 1]?.sum_weight || 0);
   }
 
-  let random = Math.random() * weights[weights.length - 1];
-  for (i = 0; i < weights.length; i++) {
-    if (weights[i] > random) {
+  let random =
+    Math.random() * random_options[random_options.length - 1]?.sum_weight;
+  random_options = shuffle(random_options);
+  for (i = 0; i < random_options.length; i++) {
+    if (random_options[i]?.sum_weight > random) {
       break;
     }
   }
 
-  return options[i].item;
+  return random_options[i].item;
 }
 
 function normal_weight_random(options) {
