@@ -66,10 +66,20 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script>
+      function scrollToTop() {
+        if ("scrollTo" in window) {
+          // 现代浏览器
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          // 旧版浏览器（jQuery）
+          $("html, body").animate({ scrollTop: 0 }, 500);
+        }
+      }
+    </script>
     <script type="module">
       $.LoadingOverlay("show");
-      window.scrollTo(0, 0);
-      $("html, body").scrollTop(0);
+      scrollToTop();
       //   let vConsole = new window.VConsole();
       const queryString = new URLSearchParams(window.location.search);
 
@@ -185,7 +195,7 @@
               .join("")
               .split(".")[0];
             galleryItem.appendChild(captionDiv);
-
+            scrollToTop();
             resolve({ index, element: galleryItem });
           };
 
@@ -251,13 +261,7 @@
             iframe.src = `nhs_snbcj_xj.html#pos${snbcj_pos}`;
           }
         }
-        // Scroll to the top of the page after loading the
-        window.scrollTo(0, 0);
-        $("html, body").scrollTop(0);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          $("html, body").scrollTop(0);
-        }, 100);
+        scrollToTop();
         $.LoadingOverlay("hide");
       });
     </script>
