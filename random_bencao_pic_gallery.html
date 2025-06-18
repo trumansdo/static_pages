@@ -69,10 +69,11 @@
     <script>
       function scrollToTop() {
         const c = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log("Scrolling up...", c);
+        console.log("上一次滚动位置: ", c);
         if (c > 0) {
           window.requestAnimationFrame(scrollToTop);
-          window.scrollTo(0, c - c / 8);
+          window.scrollTo(0, c - c / 4);
+          console.log("滚动后位置：", document.documentElement.scrollTop || document.body.scrollTop);
         }
       }
     </script>
