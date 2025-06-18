@@ -68,12 +68,11 @@
     ></script>
     <script>
       function scrollToTop() {
-        if ("scrollTo" in window) {
-          // 现代浏览器
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        } else {
-          // 旧版浏览器（jQuery）
-          $("html, body").animate({ scrollTop: 0 }, 500);
+        const c = document.documentElement.scrollTop || document.body.scrollTop;
+        console.log("Scrolling up...", c);
+        if (c > 0) {
+          window.requestAnimationFrame(scrollToTop);
+          window.scrollTo(0, c - c / 8);
         }
       }
     </script>
@@ -247,24 +246,26 @@
             });
 
             lightbox.init();
+
+            // ---------------------------------------------------------------------
+            // 调整iframe
+            const iframe = document.getElementById("nhs_snbcj_frame");
+            // 修改 iframe 的 src 并附加锚点
+            const snbcj_pos = ym_arr?.snbcj_pos ?? -1;
+            if (snbcj_pos != -1) {
+              console.log("加载内嵌页面");
+              if (1 <= snbcj_pos && snbcj_pos <= 142) {
+                iframe.src = `nhs_snbcj_sj.html#pos${snbcj_pos}`;
+              } else if (143 <= snbcj_pos && snbcj_pos <= 254) {
+                iframe.src = `nhs_snbcj_zj.html#pos${snbcj_pos}`;
+              } else if (255 <= snbcj_pos && snbcj_pos <= 385) {
+                iframe.src = `nhs_snbcj_xj.html#pos${snbcj_pos}`;
+              }
+            }
+            scrollToTop();
+            $.LoadingOverlay("hide");
           });
         });
-        // ---------------------------------------------------------------------
-        // 调整iframe
-        const iframe = document.getElementById("nhs_snbcj_frame");
-        // 修改 iframe 的 src 并附加锚点
-        const snbcj_pos = ym_arr?.snbcj_pos ?? -1;
-        if (snbcj_pos != -1) {
-          if (1 <= snbcj_pos && snbcj_pos <= 142) {
-            iframe.src = `nhs_snbcj_sj.html#pos${snbcj_pos}`;
-          } else if (143 <= snbcj_pos && snbcj_pos <= 254) {
-            iframe.src = `nhs_snbcj_zj.html#pos${snbcj_pos}`;
-          } else if (255 <= snbcj_pos && snbcj_pos <= 385) {
-            iframe.src = `nhs_snbcj_xj.html#pos${snbcj_pos}`;
-          }
-        }
-        scrollToTop();
-        $.LoadingOverlay("hide");
       });
     </script>
   </body>
