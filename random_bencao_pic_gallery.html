@@ -73,11 +73,15 @@
         if (c > 0) {
           window.requestAnimationFrame(scrollToTop);
           window.scrollTo(0, c - c / 4);
-          console.log("滚动后位置：", document.documentElement.scrollTop || document.body.scrollTop);
+          console.log(
+            "滚动后位置：",
+            document.documentElement.scrollTop || document.body.scrollTop
+          );
         }
       }
     </script>
     <script type="module">
+      history.scrollRestoration = "manual";
       $.LoadingOverlay("show", {
         background: "rgba(255, 255, 255, 0)",
       });
