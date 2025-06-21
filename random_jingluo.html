@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>随机经络穴位浏览</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      #jingluo-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      #xuewei-container {
+        padding-left: 1rem;
+      }
+      #xuewei-container li {
+        border: 1px solid gainsboro;
+        border-radius: 8px; /* 圆角效果 */
+        padding-left: 1rem; /* 内边距 */
+        padding-right: 1rem; /* 内边距 */
+        margin: 6px 0; /* 外边距 */
+        background: #fffbe8; /* 背景色 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
+        transition: all 0.3s ease; /* 过渡动画 */
+      }
+
+      #xuewei-container li:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 悬停时阴影加深 */
+        transform: translateY(-2px); /* 轻微上浮效果 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="jingluo-container">
+      <div><h2 id="jingluo_name">经络名称</h2></div>
+      <div>
+        <h3>经络歌诀</h3>
+        <div id="jingluo_gejue">
+          <p>歌诀内容</p>
+        </div>
+      </div>
+      <hr />
+      <ol id="xuewei-container">
+        <li>
+          <h2 id="xuewei1" class="xuewei-name">穴位名称</h2>
+          <h5>标签</h5>
+          <p class="xuewei_tag_desc">标签描述</p>
+          <h5 class="xuewei_desc">描述</h5>
+          <p class="xuewei_deep_desc">穴位深度</p>
+          <p class="xuewei_desc_text">描述内容</p>
+        </li>
+      </ol>
+    </div>
+  </body>
+  <script
+    src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="data/jingluo_data.js"></script>
+  <script type="module">
+    history.scrollRestoration = "manual";
+    const jingluo =
+      jingluo_data[Math.floor(Math.random() * jingluo_data.length)];
+    $("#jingluo_name").text(jingluo.jinglu_name);
+    const jingluo_gejue = jingluo.jingluo_gejue;
+    // 按每两个元素生成一个 p 标签
+    $("#jingluo_gejue").empty(); // 清空原有内容
+    for (let i = 0; i < jingluo_gejue.length; i += 2) {
+      // 获取连续两个元素（或最后一个元素）
+      let items = [
+        jingluo_gejue[i],
+        i + 1 < jingluo_gejue.length ? jingluo_gejue[i + 1] : null,
+      ].filter(Boolean); // 过滤掉空值
+
+      // 创建 p 标签并添加内容
+      let $p = $("<p>").text(items.join("，"));
+      $("#jingluo_gejue").append($p);
+    }
+    const xuewei_list = jingluo.xuewei_list;
+    $("#xuewei-container").empty();
+    for (let i = 0; i < xuewei_list.length; i++) {
+      const xuewei = xuewei_list[i];
+      const $li = $("<li>");
+      const $xw_name = $("<h3>");
+      $xw_name.addClass("xuewei-name").attr("id", "xuewei" + (i + 1));
+      $xw_name.text(xuewei.name); // Assuming
+      const $tag = $("<h4>");
+      $tag.text("标签");
+      const $tag_desc = $("<p>");
+      $tag_desc.addClass("xuewei_tag_desc");
+      $tag_desc.text(xuewei.tag.join("; ")); // 添加
+      const $desc = $("<h4>");
+      $desc.text("描述");
+      const $deep_desc_text = $("<p>");
+      $deep_desc_text.append("深度：" + xuewei.deep_desc);
+      const $desc_text = $("<p>");
+      $desc_text.append("说明：");
+      $desc_text.append($("<br/>"));
+      $desc_text.append(xuewei.desc.join("<br/>"));
+
+      $li.append($xw_name);
+      $li.append($tag);
+      $li.append($tag_desc);
+      $li.append($desc);
+      $li.append($deep_desc_text);
+      $li.append($desc_text);
+      $("#xuewei-container").append($li);
+    }
+    document
+      .querySelector(
+        "#xuewei" + Math.floor(Math.random() * xuewei_list.length)
+      )
+      .scrollIntoView({ behavior: "smooth", block: "center" });
+  </script>
+</html>
