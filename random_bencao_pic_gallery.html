@@ -180,7 +180,7 @@
         // 创建画廊容器
         const $gallery = $("#my-gallery").empty();
         const pageWidth = window.innerWidth;
-
+        const is_mobile = device.mobile();
         // 用于追踪所有图片加载状态的 Promise 数组
         const imageLoadPromises = files.map((path, index) => {
           // 将图片加载封装为 Promise
@@ -200,19 +200,21 @@
             });
             $gallery_item.append($alink);
 
-            const $image = $("<img>")
-              .attr("alt", ym_arr["name"].join("|"))
-              .attr("src", whole_path);
+            const $image = $("<img>").attr({
+              alt: ym_arr["name"].join("|"),
+              src: whole_path,
+              width: is_mobile ? pageWidth : null,
+            });
 
             const handleLoad = ($img) => {
-              const originalWidth = $img.prop("naturalWidth");
-              const originalHeight = $img.prop("naturalHeight");
+              const naturalWidth = $img.prop("naturalWidth");
+              const naturalHeight = $img.prop("naturalHeight");
 
-              const displayWidth = device.mobile()
+              const displayWidth = is_mobile
                 ? pageWidth
-                : Math.min(originalWidth, pageWidth);
+                : Math.min(naturalWidth, pageWidth);
               const displayHeight =
-                (originalHeight / originalWidth) * displayWidth;
+                (naturalHeight / naturalWidth) * displayWidth;
 
               // 设置 data-pswp 宽高
               $alink.attr({
