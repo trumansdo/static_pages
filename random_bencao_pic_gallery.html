@@ -67,7 +67,9 @@
     </script>
     <script>
       function scrollToTop() {
-        window.scrollTo(0, 0);
+        document
+          .querySelector("#pswp-gallery__item-0")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
       function initPhotoSwipe() {
@@ -186,7 +188,8 @@
             const whole_path = "figure/" + path;
             const $gallery_item = $("<div>")
               .addClass("pswp-gallery__item")
-              .attr("data-index", index);
+              .attr("data-index", index)
+              .attr("id", "pswp-gallery__item-" + index);
 
             $gallery.append($gallery_item);
 
