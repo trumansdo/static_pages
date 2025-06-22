@@ -4,35 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>伤寒论涉及药材图片浏览器</title>
+
+    <!-- Normalize -->
     <link
       href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css"
       rel="stylesheet"
     />
-    <!-- 引入样式 -->
+
+    <!-- PhotoSwipe 样式 -->
     <link
       rel="stylesheet"
       href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe/5.4.4/photoswipe.min.css"
-      integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
     <link
       rel="stylesheet"
       href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.min.css"
-      integrity="sha512-x20LXbTUxAMuniBAuSyDGScWaoCxvZJ8m0tbJCRtpPkvPgsb2kStG9ZhDQKHj5mDWaKFOP7TadAZ4KVAyFJwNA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="lib/message.min.css" />
-  </head>
 
+    <!-- 消息提示样式 -->
+    <link rel="stylesheet" href="lib/message.min.css" />
+    <style>
+      #my-gallery {
+        align-content: center;
+      }
+    </style>
+  </head>
   <body>
-    <!-- 图片画廊 -->
+    <!-- 图片画廊容器 -->
     <div
       id="my-gallery"
       itemscope
       itemtype="http://schema.org/ImageGallery"
     ></div>
+
+    <!-- 内嵌页面容器 -->
     <iframe
       title="nhs_snbcj_frame"
       id="nhs_snbcj_frame"
@@ -40,271 +45,223 @@
       frameborder="0"
       style="width: 100%; height: 60vh"
     ></iframe>
+
+    <!-- 第三方库 -->
     <script src="data/ym_data.js"></script>
     <script src="data/url_data.js"></script>
     <script src="data/figure_data.js"></script>
-    <script
-      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.7.1/jquery.min.js"
-      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <!-- <script
-      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js"
-      integrity="sha512-hktawXAt9BdIaDoaO9DlLp6LYhbHMi5A36LcXQeHgVKUH6kJMOQsAtIw2kmQ9RERDpnSTlafajo6USh9JUXckw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script> -->
-    <script
-      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/device.js/0.2.7/device.min.js"
-      integrity="sha512-BLaPLqY2LFOIcJJjGvv/1fojyBkhzuaKGhHWHFj7QOcpHelseTeUecnUBtTENdzr5ugPqNTaQKKtJh8jTg3dRQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/vConsole/3.15.1/vconsole.min.js"
-      integrity="sha512-45r3PcQfwT69iG1BwGOOZKjNKDIlT4fp8A/auHloAAajP0/HXFFGgtX2jHZVIfhjmaXcXVTRSlGu1OSajP7gzQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/device.js/0.2.7/device.min.js"></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
+    <script src="lib/message.min.js"></script>
 
     <script>
       window.QMSG_GLOBALS = {
         DEFAULTS: {
           showClose: false,
-          timeout: 5000,
+          timeout: 53000,
           maxNums: 1000,
           autoClose: false,
         },
       };
     </script>
-    <script src="lib/message.min.js"></script>
     <script>
-      $(function () {
-        function scrollToTop() {
-          // document
-          //   .querySelector(`.pswp-gallery__item[data-index="0"]`)
-          //   ?.scrollIntoView({ behavior: "smooth", block: "center" });
-          window.scrollTo(0, 0);
-          // const c = document.documentElement.scrollTop || document.body.scrollTop;
-          // console.log("上一次滚动位置: ", c);
-          // if (c > 2) {
-          //   window.requestAnimationFrame(scrollToTop);
-          //   window.scrollTo(0, c - c / 4);
-          //   console.log(
-          //     "滚动后位置：",
-          //     document.documentElement.scrollTop || document.body.scrollTop
-          //   );
-          // }
+      function scrollToTop() {
+        window.scrollTo(0, 0);
+      }
+
+      function initPhotoSwipe() {
+        import(
+          "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe/5.4.4/photoswipe-lightbox.esm.min.js"
+        ).then((module) => {
+          const PhotoSwipeLightbox = module.default;
+          const lightbox = new PhotoSwipeLightbox({
+            gallery: "#my-gallery",
+            childSelector: ".pswp-gallery__item",
+            pswpModule: () =>
+              import(
+                "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe/5.4.4/photoswipe.esm.min.js"
+              ),
+            initialZoomLevel: "fit",
+          });
+
+          import(
+            "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.esm.min.js"
+          ).then((pluginModule) => {
+            const PhotoSwipeDynamicCaption = pluginModule.default;
+            const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+              mobileLayoutBreakpoint: 700,
+              type: "below",
+              mobileCaptionOverlapRatio: 1,
+            });
+            lightbox.init();
+          });
+        });
+      }
+
+      function loadIframeContent(ym_arr, qMsgLoading) {
+        const iframe = document.querySelector("#nhs_snbcj_frame");
+        const snbcj_pos = ym_arr?.snbcj_pos ?? -1;
+
+        if (snbcj_pos != -1) {
+          if (1 <= snbcj_pos && snbcj_pos <= 142) {
+            iframe.src = `nhs_snbcj_sj.html#pos${snbcj_pos}`;
+          } else if (143 <= snbcj_pos && snbcj_pos <= 254) {
+            iframe.src = `nhs_snbcj_zj.html#pos${snbcj_pos}`;
+          } else if (255 <= snbcj_pos && snbcj_pos <= 385) {
+            iframe.src = `nhs_snbcj_xj.html#pos${snbcj_pos}`;
+          }
         }
-        function convertImageToBase64(imageElement, callback) {
-          const canvas = document.createElement("canvas");
-          const ctx = canvas.getContext("2d");
 
-          canvas.width = imageElement.width;
-          canvas.height = imageElement.height;
+        $(iframe).on("load", function () {
+          scrollToTop();
+          qMsgLoading.close();
+          Qmsg.success("加载完成");
+        });
+      }
 
-          ctx.drawImage(imageElement, 0, 0);
-
-          const base64String = canvas.toDataURL("image/png");
-          debugger;
-          callback(base64String);
-        }
-
-        let random_id = Math.random();
-        history.scrollRestoration = "manual";
-        const qMsgLoading = Qmsg.loading("加载中...");
-        let vConsole = new window.VConsole();
+      function random_ym_files() {
         const queryString = new URLSearchParams(window.location.search);
-
         let ym_source = queryString.get("ym_source");
         if (!queryString.has("ym_source")) {
           ym_source = "1";
         }
+
         let ym_arr = {};
         if (ym_source == "1") {
-          // 仅伤寒论药材
           ym_arr = random_only_nihaixia_shl_ym_ext();
         } else if (ym_source == "2") {
-          // 仅金匮的药材
           ym_arr = random_only_nihaixia_jk_ym_ext();
         } else if (ym_source == "3") {
-          // 伤寒与金匮的
-          // 神农本草经全部的
           ym_arr = random_nihaixia_shl_and_jk_ym_ext();
         } else if (ym_source == "0") {
-          // 神农本草经全部的
           ym_arr = random_all_nihaixia_slbcj_ym_ext();
         } else if (ym_source == "4") {
-          // 神农本草经中排除伤寒之外的药材
           ym_arr = random_exclude_nihaixia_shl_ym_ext();
         } else {
-          // 全部
           ym_arr = { name: [random_one_dir()] };
         }
-        let path_source = queryString.get("path_source");
 
+        let path_source = queryString.get("path_source");
         if (!queryString.has("path_source")) {
           path_source = "1";
         }
+
         let files = [];
         if (path_source == "1") {
-          // 全部分文件路径，包括伪品的
           files = find_paths(ym_arr["name"]);
         } else {
-          // 只包括正品的文件路径
           files = find_genuine_paths(ym_arr["name"]);
         }
 
-        // 以下是生成图片浏览画廊的
         if (files === undefined || files.length === 0) {
           console.log("随机药名没有对应的图片文件: ", ym_arr["name"]);
           location.reload();
         }
 
-        // ----------------------------------------------------------------------
-        // 创建画廊
-        const gallery = document.getElementById("my-gallery");
-        $(gallery).empty();
-        // 预先创建占位元素
-        files.forEach((_, index) => {
-          const placeholder = document.createElement("div");
-          placeholder.className = "pswp-gallery__item";
-          placeholder.setAttribute("data-index", index);
-          gallery.appendChild(placeholder);
-        });
+        return { ym_arr, files };
+      }
+    </script>
 
+    <script type="module">
+      $(function () {
+        let random_id = Math.random();
+        history.scrollRestoration = "manual";
+        const qMsgLoading = Qmsg.loading("加载中...");
+        let vConsole = new window.VConsole();
+
+        // 随机生成药材文件列表
+        const ym_info = random_ym_files();
+        const ym_arr = ym_info.ym_arr;
+        const files = ym_info.files;
+
+        // 创建画廊容器
+        const $gallery = $("#my-gallery").empty();
         const pageWidth = window.innerWidth;
 
-        // 将每个图片加载包装成一个 Promise，并保留其在数组中的位置
-        const loadImagePromises = files.map((path, index) => {
+        // 用于追踪所有图片加载状态的 Promise 数组
+        const imageLoadPromises = files.map((path, index) => {
+          // 将图片加载封装为 Promise
           return new Promise((resolve) => {
             const whole_path = "figure/" + path;
-            const img = new Image();
-            img.src = whole_path;
-            // 封装图片处理逻辑
-            const handleImageLoad = () => {
-              // Qmsg.info(`加载第${index}个图片`);
-              const originalWidth = img.naturalWidth;
-              const originalHeight = img.naturalHeight;
+            const $gallery_item = $("<div>")
+              .addClass("pswp-gallery__item")
+              .attr("data-index", index);
+
+            $gallery.append($gallery_item);
+
+            const $alink = $("<a>").attr({
+              href: "javascript:void(0)",
+              "data-pswp-src": whole_path,
+              target: "_blank",
+            });
+            $gallery_item.append($alink);
+
+            const $image = $("<img>")
+              .attr("alt", ym_arr["name"].join("|"))
+              .attr("src", whole_path);
+
+            const handleLoad = ($img) => {
+              const originalWidth = $img.prop("naturalWidth");
+              const originalHeight = $img.prop("naturalHeight");
+
               const displayWidth = device.mobile()
                 ? pageWidth
                 : Math.min(originalWidth, pageWidth);
               const displayHeight =
                 (originalHeight / originalWidth) * displayWidth;
 
-              // 找到对应位置的占位元素
-              const galleryItem = document.querySelector(
-                `.pswp-gallery__item[data-index="${index}"]`
+              // 设置 data-pswp 宽高
+              $alink.attr({
+                "data-pswp-width": displayWidth,
+                "data-pswp-height": Math.round(displayHeight),
+              });
+
+              // 设置 img 标签宽高样式
+              $img
+                .attr({
+                  width: displayWidth,
+                  height: Math.round(displayHeight),
+                })
+                .css({
+                  width: displayWidth + "px",
+                  height: Math.round(displayHeight) + "px",
+                });
+              console.debug(
+                `加载第 ${index + 1} 张图片完成，路径为 ${whole_path} 且已添加`
               );
-              galleryItem.innerHTML = ""; // 清空占位
-
-              // 创建 a 标签（PhotoSwipe 触发点）
-              const link = document.createElement("a");
-              link.href = "javascript:void(0)";
-              link.setAttribute("data-pswp-src", whole_path);
-              link.setAttribute("data-pswp-width", displayWidth);
-              link.setAttribute("data-pswp-height", Math.round(displayHeight));
-              link.target = "_blank";
-
-              // 创建 img 标签
-              const imageElement = document.createElement("img");
-              imageElement.alt = ym_arr["name"].join("|");
-              imageElement.width = displayWidth;
-              imageElement.height = Math.round(displayHeight);
-              imageElement.style.width = displayWidth + "px";
-              imageElement.style.height = Math.round(displayHeight) + "px";
-              convertImageToBase64(img, function (base64Str) {
-                imageElement.src = base64Str;
-              });
-              link.appendChild(imageElement);
-              galleryItem.appendChild(link);
-
-              // 创建 caption
-              const captionDiv = document.createElement("div");
-              captionDiv.className = "pswp-caption-content";
-              captionDiv.textContent = path
-                .split("/")
-                .slice(1, 2)
-                .join("")
-                .split(".")[0];
-              galleryItem.appendChild(captionDiv);
-              $(imageElement).on("load", function () {
-                scrollToTop();
-                resolve({ index, element: galleryItem });
-              });
-              $(imageElement).on("error", function () {
-                Qmsg.error("图片加载失败:" + path);
-                resolve(null);
-              });
+              resolve(); // 图片处理完成
             };
 
-            // 处理缓存加载（img.complete）
-            if (img.complete && img.naturalWidth !== 0) {
+            // 检查缓存图片
+            if ($image.prop("complete") && $image.prop("naturalWidth") !== 0) {
               console.log(`第${index}个图片使用了缓存图片。`);
-              handleImageLoad();
+              handleLoad($image);
             } else {
-              img.addEventListener("load", handleImageLoad);
-              img.addEventListener("error", () => {
-                console.error("图片加载失败:", path);
-                resolve(null);
-              });
+              $image
+                .on("load", function (event) {
+                  handleLoad($(event.target)); // Pass the image element
+                })
+                .on("error", function () {
+                  Qmsg.error("图片加载失败:" + path);
+                  resolve(); // 失败时也 resolve，避免阻塞后续流程
+                });
             }
+            $alink.append($image);
+
+            // 创建 caption
+            const captionDiv = $("<div>")
+              .addClass("pswp-caption-content")
+              .text(path.split("/").slice(1, 2).join("").split(".")[0]);
+            $gallery_item.append(captionDiv);
           });
         });
 
-        // 并发加载所有图片并按顺序插入 DOM
-        Promise.all(loadImagePromises).then((results) => {
-          // 初始化 PhotoSwipe
-          import(
-            "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe/5.4.4/photoswipe-lightbox.esm.min.js"
-          ).then((module) => {
-            const PhotoSwipeLightbox = module.default;
-            const lightbox = new PhotoSwipeLightbox({
-              gallery: "#my-gallery",
-              childSelector: ".pswp-gallery__item",
-              pswpModule: () =>
-                import(
-                  "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe/5.4.4/photoswipe.esm.min.js"
-                ),
-              initialZoomLevel: "fit",
-              secondaryZoomLevel: 1,
-              maxZoomLevel: 10,
-            });
-
-            import(
-              "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/photoswipe-dynamic-caption-plugin/1.2.7/photoswipe-dynamic-caption-plugin.esm.min.js"
-            ).then((pluginModule) => {
-              const PhotoSwipeDynamicCaption = pluginModule.default;
-              const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-                mobileLayoutBreakpoint: 700,
-                type: "below",
-                mobileCaptionOverlapRatio: 1,
-              });
-
-              lightbox.init();
-            });
-
-            // ---------------------------------------------------------------------
-            // 调整iframe
-            const iframe = document.querySelector("#nhs_snbcj_frame");
-            // 修改 iframe 的 src 并附加锚点
-            const snbcj_pos = ym_arr?.snbcj_pos ?? -1;
-            if (snbcj_pos != -1) {
-              console.log("加载内嵌页面" + random_id);
-              if (1 <= snbcj_pos && snbcj_pos <= 142) {
-                iframe.src = `nhs_snbcj_sj.html#pos${snbcj_pos}`;
-              } else if (143 <= snbcj_pos && snbcj_pos <= 254) {
-                iframe.src = `nhs_snbcj_zj.html#pos${snbcj_pos}`;
-              } else if (255 <= snbcj_pos && snbcj_pos <= 385) {
-                iframe.src = `nhs_snbcj_xj.html#pos${snbcj_pos}`;
-              }
-            }
-            $(iframe).on("load", function () {
-              scrollToTop();
-              qMsgLoading.close();
-            });
-          });
+        // 所有图片加载完成后执行初始化逻辑
+        Promise.all(imageLoadPromises).then(() => {
+          console.info("所有图片加载完成");
+          initPhotoSwipe(); // 初始化 PhotoSwipe
+          loadIframeContent(ym_arr, qMsgLoading); // 初始化 iframe
         });
       });
     </script>
