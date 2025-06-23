@@ -118,14 +118,14 @@
 
         $(iframe).on("load", function (event) {
           $(document.body).css({
-            overflow: "hidden", 
-          });
-          $(event.target).css({
-            visibility: "visible",
+            overflow: "hidden",
           });
           setTimeout(function () {
+            $(event.target).css({
+              visibility: "visible",
+            });
             $(document.body).css({
-              overflow: "", 
+              overflow: "",
             });
             // scrollToTop();
           }, 1000);
