@@ -43,7 +43,13 @@
       id="nhs_snbcj_frame"
       src="javascript:void(0)"
       frameborder="0"
-      style="width: 100%; height: 60vh"
+      style="
+        width: 100%;
+        height: 60vh;
+        top: 100vh;
+        position: absolute;
+        transition: top 0.3s ease-out;
+      "
     ></iframe>
 
     <!-- 第三方库 -->
@@ -66,7 +72,9 @@
       };
     </script>
     <script>
+      debugger;
       function scrollToTop() {
+        window.scrollTo(0, 0);
         document
           .querySelector("#pswp-gallery__item-0")
           ?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -115,10 +123,12 @@
           }
         }
 
-        $(iframe).on("load", function () {
-          scrollToTop();
+        $(iframe).on("load", function (event) {
           qMsgLoading.close();
           Qmsg.success("加载完成");
+          scrollToTop();
+          $(document.body).css({ overflow: "" });
+          $(event.target).css({ top: "0vh", position: "relative" });
         });
       }
 
@@ -168,6 +178,7 @@
     <script type="module">
       $(function () {
         let random_id = Math.random();
+        $(document.body).css({ overflow: "hidden" });
         history.scrollRestoration = "manual";
         const qMsgLoading = Qmsg.loading("加载中...");
         let vConsole = new window.VConsole();
@@ -235,7 +246,6 @@
               console.debug(
                 `加载第 ${index + 1} 张图片完成，路径为 ${whole_path} 且已添加`
               );
-              scrollToTop();
               resolve(); // 图片处理完成
             };
 
