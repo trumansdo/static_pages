@@ -46,9 +46,9 @@
       style="
         width: 100%;
         height: 60vh;
-        top: 100vh;
-        position: absolute;
-        transition: top 0.3s ease-out;
+        position: relative;
+        display: block;
+        visibility: hidden;
       "
     ></iframe>
 
@@ -72,7 +72,6 @@
       };
     </script>
     <script>
-      debugger;
       function scrollToTop() {
         window.scrollTo(0, 0);
         document
@@ -126,9 +125,10 @@
         $(iframe).on("load", function (event) {
           qMsgLoading.close();
           Qmsg.success("加载完成");
-          scrollToTop();
-          $(document.body).css({ overflow: "" });
-          $(event.target).css({ top: "0vh", position: "relative" });
+          setTimeout(function () {
+            $(event.target).css({ visibility: "visible" });
+            scrollToTop();
+          }, 1000);
         });
       }
 
@@ -178,7 +178,6 @@
     <script type="module">
       $(function () {
         let random_id = Math.random();
-        $(document.body).css({ overflow: "hidden" });
         history.scrollRestoration = "manual";
         const qMsgLoading = Qmsg.loading("加载中...");
         let vConsole = new window.VConsole();
