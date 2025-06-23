@@ -117,14 +117,20 @@
         }
 
         $(iframe).on("load", function (event) {
-          qMsgLoading.close();
-          Qmsg.success("加载完成");
+          $(document.body).css({
+            overflow: "hidden", 
+          });
+          $(event.target).css({
+            visibility: "visible",
+          });
           setTimeout(function () {
-            $(event.target).css({
-              visibility: "visible",
+            $(document.body).css({
+              overflow: "", 
             });
             // scrollToTop();
           }, 1000);
+          qMsgLoading.close();
+          Qmsg.success("加载完成");
         });
       }
 
