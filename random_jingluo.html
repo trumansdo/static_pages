@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>随机经络穴位浏览</title>
     <link
-      href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css"
       rel="stylesheet"
+      href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <style>
       #jingluo-container {
@@ -112,9 +115,7 @@
       $("#xuewei-container").append($li);
     }
     document
-      .querySelector(
-        "#xuewei" + Math.floor(Math.random() * xuewei_list.length)
-      )
+      .querySelector("#xuewei" + Math.floor(Math.random() * xuewei_list.length))
       .scrollIntoView({ behavior: "smooth", block: "center" });
   </script>
 </html>

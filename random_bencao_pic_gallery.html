@@ -7,8 +7,11 @@
 
     <!-- Normalize -->
     <link
-      href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css"
       rel="stylesheet"
+      href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
 
     <!-- PhotoSwipe 样式 -->
@@ -23,9 +26,43 @@
 
     <!-- 消息提示样式 -->
     <link rel="stylesheet" href="lib/message.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/lity/2.4.1/lity.min.css"
+      integrity="sha512-UiVP2uTd2EwFRqPM4IzVXuSFAzw+Vo84jxICHVbOA1VZFUyr4a6giD9O3uvGPFIuB2p3iTnfDVLnkdY7D/SJJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
+      html,
+      body {
+        font-size: 20px;
+      }
       #my-gallery {
         align-content: center;
+      }
+      .circular-float-btn {
+        position: fixed;
+        left: 1.4rem;
+        bottom: 3rem;
+        z-index: 1000;
+        width: 2rem;
+        height: 2rem;
+        background-color: #007bffd1;
+        color: #e3e2e3;
+        text-decoration: none;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        line-height: 1.8rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-size: 2rem;
+        vertical-align: middle;
+      }
+
+      .circular-float-btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
       }
     </style>
   </head>
@@ -37,14 +74,12 @@
       itemtype="http://schema.org/ImageGallery"
     ></div>
 
-    <!-- 内嵌页面容器 -->
-    <iframe
-      title="nhs_snbcj_frame"
+    <a
       id="nhs_snbcj_frame"
-      src="javascript:void(0)"
-      frameborder="0"
-      style="width: 100%; height: 60vh"
-    ></iframe>
+      class="circular-float-btn"
+      href="javascript:void(0)"
+      data-lity
+    ></a>
 
     <!-- 第三方库 -->
     <script src="data/ym_data.js"></script>
@@ -54,7 +89,12 @@
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/device.js/0.2.7/device.min.js"></script>
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
     <script src="lib/message.min.js"></script>
-
+    <script
+      src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/lity/2.4.1/lity.min.js"
+      integrity="sha512-UU0D/t+4/SgJpOeBYkY+lG16MaNF8aqmermRIz8dlmQhOlBnw6iQrnt4Ijty513WB3w+q4JO75IX03lDj6qQNA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
       window.QMSG_GLOBALS = {
         DEFAULTS: {
@@ -103,32 +143,41 @@
       }
 
       function loadIframeContent(ym_arr, qMsgLoading) {
-        const iframe = document.querySelector("#nhs_snbcj_frame");
+        const alink = $("#nhs_snbcj_frame");
         const snbcj_pos = ym_arr?.snbcj_pos ?? -1;
 
         if (snbcj_pos != -1) {
+          let link = "";
           if (1 <= snbcj_pos && snbcj_pos <= 142) {
-            iframe.src = `nhs_snbcj_sj.html#pos${snbcj_pos}`;
+            link = `nhs_snbcj_sj.html#pos${snbcj_pos}`;
           } else if (143 <= snbcj_pos && snbcj_pos <= 254) {
-            iframe.src = `nhs_snbcj_zj.html#pos${snbcj_pos}`;
+            link = `nhs_snbcj_zj.html#pos${snbcj_pos}`;
           } else if (255 <= snbcj_pos && snbcj_pos <= 385) {
-            iframe.src = `nhs_snbcj_xj.html#pos${snbcj_pos}`;
+            link = `nhs_snbcj_xj.html#pos${snbcj_pos}`;
           }
+          alink.attr({
+            href: link,
+          });
         }
 
-        $(document.body).css({
-          overflow: "hidden",
+        // 创建 MutationObserver 实例
+        const observer = new MutationObserver(function (mutationsList) {
+          debugger;
+          for (let mutation of mutationsList) {
+            if (mutation.type === "childList") {
+              $(".lity .lity-iframe-container").css({
+                "max-height": "",
+                height: device.mobile() ? "80vh" : "50vh",
+              });
+            }
+          }
         });
-        $(iframe).on("load", function (event) {
-          setTimeout(function () {
-            $(document.body).css({
-              overflow: "",
-            });
-            scrollToTop();
-          }, 1000);
-          qMsgLoading.close();
-          Qmsg.success("加载完成");
-        });
+
+        // 开始监听 DOM 变化
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        qMsgLoading.close();
+        Qmsg.success("加载完成");
       }
 
       function random_ym_files() {
