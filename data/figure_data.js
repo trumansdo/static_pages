@@ -4718,19 +4718,19 @@ const source_file_paths = [
       },
       {
         path: "地榆/210_隔山消.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "地榆/230_紫地榆.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "地榆/250_黄地榆.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "地榆/270_拳参.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "地榆/290_地榆饮片.jpg",
@@ -6053,55 +6053,55 @@ const source_file_paths = [
       },
       {
         path: "天花粉/230_茅瓜.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/250_长萼栝楼.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/270_南方栝楼.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/290_湖北栝楼未去外皮.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/310_湖北栝楼纵片.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/330_王瓜.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/350_木鳖.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/370_木鳖纵切片.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/390_赤雹属一种.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/410_罗汉果根.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/430_罗汉果根纵切.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/450_白首乌.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/470_粉防己.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "天花粉/490_天花粉饮片.jpg",
@@ -8247,43 +8247,43 @@ const source_file_paths = [
       },
       {
         path: "川贝母/370_伪品：小平贝.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/390_伪品：小平贝母与川贝母比较.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/410_丽江山慈菇.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/430_湖北贝母.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/450_小浙贝.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/470_光慈姑.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/490_新疆贝母.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/510_伊犁贝母.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/530_伊犁贝母与新疆贝母比较图.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/550_东贝.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "川贝母/570_倪注神农本草经.jpg",
@@ -8969,27 +8969,27 @@ const source_file_paths = [
       },
       {
         path: "当归/110_紫花前胡.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "当归/130_欧当归.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "当归/150_日本东当归.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "当归/170_朝鲜东当归.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "当归/190_吉林东当归.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "当归/210_云南野当归.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "当归/230_当归切片.jpg",
@@ -11373,7 +11373,7 @@ const source_file_paths = [
       },
       {
         path: "桑螵蛸/190_伪品.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "桑螵蛸/210_倪注神农本草经.jpg",
@@ -12872,7 +12872,7 @@ const source_file_paths = [
       },
       {
         path: "浮萍/110_大薸.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "浮萍/130_倪注神农本草经.jpg",
@@ -13563,23 +13563,23 @@ const source_file_paths = [
       },
       {
         path: "淫羊藿/810_宽序淫羊藿.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "淫羊藿/830_尖叶淫羊藿.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "淫羊藿/850_宝兴淫羊藿.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "淫羊藿/870_宝兴淫羊藿叶尖上下表面观.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "淫羊藿/890_湖南淫羊藿.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "淫羊藿/910_湖南淫羊藿叶尖上下表面观.jpg",
@@ -14622,11 +14622,11 @@ const source_file_paths = [
       },
       {
         path: "狗脊/210_狗脊蕨.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "狗脊/230_蜈蚣草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "狗脊/250_狗脊饮片.jpg",
@@ -15568,11 +15568,11 @@ const source_file_paths = [
       },
       {
         path: "瓜蒌/290_单边瓜蒌子.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "瓜蒌/310_长萼栝楼种子.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "瓜蒌/330_几种不同瓜蒌子的对比.jpg",
@@ -16576,11 +16576,11 @@ const source_file_paths = [
       },
       {
         path: "白芍/150_毛果芍药.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白芍/170_伪品云白芍.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白芍/190_白芍饮片.jpg",
@@ -16698,11 +16698,11 @@ const source_file_paths = [
       },
       {
         path: "白芷/190_香白芷.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白芷/210_岩白芷.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白芷/230_白芷饮片.jpg",
@@ -16784,7 +16784,7 @@ const source_file_paths = [
       },
       {
         path: "白茅根/110_白草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白茅根/130_白茅根饮片.jpg",
@@ -16899,23 +16899,23 @@ const source_file_paths = [
       },
       {
         path: "白薇/130_伪品竹灵消.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白薇/150_徐长卿.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白薇/170_毛大丁草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白薇/190_宝锋草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白薇/210_紫花合掌消.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白薇/230_白薇饮片.jpg",
@@ -17101,7 +17101,7 @@ const source_file_paths = [
       },
       {
         path: "白鲜皮/090_鹅绒藤皮.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "白鲜皮/110_白鲜皮劣药：木心未去掉.jpg",
@@ -18558,27 +18558,27 @@ const source_file_paths = [
       },
       {
         path: "秦艽/290_西藏黑秦艽.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "秦艽/310_黑大艽.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "秦艽/330_红秦艽.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "秦艽/350_黄秦艽.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "秦艽/370_五台秦艽.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "秦艽/390_独一味.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "秦艽/410_秦艽正品与伪品比较鉴别.jpg",
@@ -19049,23 +19049,23 @@ const source_file_paths = [
       },
       {
         path: "粉、绵萆薢/270_纤细薯蓣.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "粉、绵萆薢/290_纤细薯蓣.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "粉、绵萆薢/310_山萆薢.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "粉、绵萆薢/330_穿山龙.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "粉、绵萆薢/350_红萆薢.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "粉、绵萆薢/370_萆薢与混伪品性状比较表.jpg",
@@ -19608,19 +19608,19 @@ const source_file_paths = [
       },
       {
         path: "紫草/350_滇紫草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "紫草/370_藏紫草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "紫草/390_露蕊紫草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "紫草/410_北紫草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "紫草/430_新疆紫草.jpg",
@@ -22402,11 +22402,11 @@ const source_file_paths = [
       },
       {
         path: "苦参/190_左：苦参   右：古羊藤.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "苦参/210_刺果甘草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "苦参/230_苦参饮片.jpg",
@@ -23954,15 +23954,15 @@ const source_file_paths = [
       },
       {
         path: "葛根/230_紫藤根.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "葛根/250_紫藤根.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "葛根/270_苦葛根.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "葛根/290_野葛藤茎中心有髓.jpg",
@@ -26170,11 +26170,11 @@ const source_file_paths = [
       },
       {
         path: "覆盆子/170_山莓.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "覆盆子/190_覆盆子、山莓小果对比.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "覆盆子/210_覆盆子、蓬蘽、山莓对比.jpg",
@@ -26474,23 +26474,23 @@ const source_file_paths = [
       },
       {
         path: "败酱草/150_菥蓂.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "败酱草/170_苦菜.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "败酱草/190_长裂苦苣菜.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "败酱草/210_苏败酱.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "败酱草/230_苣荬菜.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "败酱草/250_倪注神农本草经.jpg",
@@ -26675,19 +26675,19 @@ const source_file_paths = [
       },
       {
         path: "赤芍/150_美丽芍药鲜根.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "赤芍/170_块根芍药.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "赤芍/190_草芍药.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "赤芍/210_伪制品地榆片.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "赤芍/230_赤芍饮片.jpg",
@@ -27220,15 +27220,15 @@ const source_file_paths = [
       },
       {
         path: "通草/090_西南绣球.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "通草/110_西南绣球.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "通草/130_伪品.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "通草/150_左：通草  中：小通草  右：灯心草大小比较.jpg",
@@ -28805,15 +28805,15 @@ const source_file_paths = [
       },
       {
         path: "阿胶/090_黄明胶.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "阿胶/110_其它动物皮伪制加工品.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "阿胶/130_塑料伪制加工品.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "阿胶/150_阿胶与其他胶类的性状鉴别.jpg",
@@ -31466,15 +31466,15 @@ const source_file_paths = [
       },
       {
         path: "麻黄/210_丽江麻黄.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "麻黄/230_膜果麻黄.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "麻黄/250_节节草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "麻黄/270_麻黄段.jpg",
@@ -31482,11 +31482,11 @@ const source_file_paths = [
       },
       {
         path: "麻黄/290_麻黄伪品：节节草.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "麻黄/310_麻黄伪品：问荆.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "麻黄/330_蜜麻黄饮片.jpg",
@@ -31743,15 +31743,15 @@ const source_file_paths = [
       },
       {
         path: "黄芩/110_滇黄芩.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "黄芩/130_粘毛黄芩.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "黄芩/150_甘肃黄芩.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "黄芩/170_黄芩片.jpg",
@@ -32519,39 +32519,39 @@ const source_file_paths = [
       },
       {
         path: "龟甲/190_龟板与马来闭壳龟.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/210_缅甸陆龟、黄喉拟水龟.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/230_巴西龟（巴西红耳龟）.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/250_伪品：缅甸陆龟背甲.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/270_缅甸陆龟腹甲.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/290_伪品：凹甲陆龟背面.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/310_伪品：凹甲陆龟腹甲.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/330_黄缘闭壳龟背甲.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/350_黄缘闭壳龟腹甲.jpg",
-        type: [1],
+        type: [2],
       },
       {
         path: "龟甲/370_背甲.jpg",
